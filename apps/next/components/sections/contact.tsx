@@ -1,7 +1,7 @@
 'use client'
 
-import { Mail, MessageCircle, Send, ArrowUp } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from '../icons'
+import { Mail, Send, ArrowUp } from 'lucide-react'
+import { GithubIcon, LinkedinIcon, WhatsappIcon } from '../icons'
 import { CONTACT, PROFILE } from 'app/data/portfolio'
 import { Reveal } from '../reveal'
 import { Section, SectionHead } from '../section-head'
@@ -30,10 +30,10 @@ const links = [
   },
   {
     key: 'whatsapp',
-    label: 'WhatsApp',
+    label: 'WhatsApp / Teléfono',
     value: CONTACT.whatsappLabel,
     href: CONTACT.whatsapp,
-    Icon: MessageCircle,
+    Icon: WhatsappIcon,
   },
 ]
 
@@ -53,9 +53,10 @@ export function ContactSection() {
             className="section-subtitle"
             style={{ margin: '0 auto', textAlign: 'center' }}
           >
-            Estoy abierto a nuevas oportunidades, colaboraciones y proyectos
-            tecnológicos. Si tienes una idea, un proyecto o simplemente quieres
-            conectar, estaré encantado de conversar.
+            Estoy abierto a oportunidades profesionales, proyectos de desarrollo,
+            colaboraciones y nuevos retos tecnológicos que me permitan continuar
+            creciendo como desarrollador de software. Si tienes una propuesta, un
+            proyecto o deseas conocer más sobre mi trabajo, conversemos.
           </p>
 
           <div
@@ -69,6 +70,9 @@ export function ContactSection() {
           >
             <a className="btn btn-primary" href={`mailto:${CONTACT.email}`}>
               <Send size={17} /> Enviar correo
+            </a>
+            <a className="btn btn-ghost" href={CONTACT.whatsapp} target="_blank" rel="noreferrer">
+              <WhatsappIcon size={17} /> WhatsApp
             </a>
             <a className="btn btn-ghost" href={CONTACT.github} target="_blank" rel="noreferrer">
               <GithubIcon size={17} /> Ver GitHub
@@ -130,14 +134,17 @@ export function Footer() {
             <LinkedinIcon size={17} />
           </a>
           <a className="icon-btn" href={CONTACT.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
-            <MessageCircle size={17} />
+            <WhatsappIcon size={17} />
           </a>
           <button className="icon-btn" onClick={toTop} aria-label="Volver arriba">
             <ArrowUp size={17} />
           </button>
         </div>
 
-        <div>© {new Date().getFullYear()} · Hecho con React, Next.js & Three.js</div>
+        <div style={{ textAlign: 'right', fontSize: 13, color: '#6b7a99' }}>
+          <div>Desarrollando ideas, aprendiendo tecnologías y construyendo soluciones digitales.</div>
+          <div style={{ marginTop: 4 }}>© {new Date().getFullYear()} {PROFILE.name}. Todos los derechos reservados.</div>
+        </div>
       </div>
     </footer>
   )

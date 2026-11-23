@@ -1,38 +1,53 @@
 /**
- * Paleta compartida de la app móvil (Expo / Android / iOS).
- * Misma identidad visual que la web: neón cian + violeta.
+ * Paleta compartida de la app (Next.js / Expo / Android / iOS).
+ * Identidad visual: Negro obsidiana + Oro satinado/champagne + Blanco puro.
  */
 export const colors = {
-  bg: '#04050a',
-  bgSoft: '#080b14',
-  surface: 'rgba(255,255,255,0.05)',
-  surfaceHigh: 'rgba(255,255,255,0.08)',
-  border: 'rgba(255,255,255,0.10)',
+  bg: '#060709',
+  bgSoft: '#0c0e14',
+  surface: 'rgba(255,255,255,0.035)',
+  surfaceHigh: 'rgba(255,255,255,0.065)',
+  border: 'rgba(212,175,55,0.18)',
+  borderHover: 'rgba(212,175,55,0.5)',
 
-  cyan: '#22d3ee',
-  cyanSoft: '#67e8f9',
-  violet: '#a855f7',
-  violetDeep: '#7c3aed',
-  magenta: '#ec4899',
-  indigo: '#6366f1',
-  green: '#34d399',
-  amber: '#fbbf24',
+  // Tonos dorados
+  gold: '#d4af37',
+  goldLight: '#f6d585',
+  goldSoft: '#e5c158',
+  goldDark: '#8a6d1c',
+  goldGlow: 'rgba(212,175,55,0.35)',
 
-  text: '#eaf1ff',
-  textMuted: '#9aa8c4',
-  textDim: '#6b7a99',
-}
+  // Contrastes blanco y plata
+  white: '#ffffff',
+  silver: '#e2e8f0',
+  platinum: '#f8fafc',
 
-/** Gradientes usados por los botones ( RN no puede teñir texto con degradado ). */
-colors.primaryGradient = ['#22d3ee', '#7c3aed'] as const
-colors.pinkGradient = ['#a855f7', '#ec4899'] as const
-colors.mintGradient = ['#34d399', '#22d3ee'] as const
+  // Estados
+  green: '#10b981',
+  amber: '#d4af37',
+  red: '#ef4444',
 
+  text: '#f8fafc',
+  textMuted: '#94a3b8',
+  textDim: '#64748b',
+
+  // Retrocompatibilidad
+  cyan: '#d4af37',
+  cyanSoft: '#f6d585',
+  violet: '#e5c158',
+  violetDeep: '#8a6d1c',
+  magenta: '#f6d585',
+  indigo: '#d4af37',
+} as const
+
+/** Gradientes dorados metálicos para botones y acentos */
 export const gradients = {
-  primary: ['#22d3ee', '#7c3aed'] as const,
-  hero: ['#22d3ee', '#6366f1', '#a855f7'] as const,
-  pink: ['#a855f7', '#ec4899'] as const,
-  mint: ['#34d399', '#22d3ee'] as const,
+  primary: ['#f6d585', '#b38b2d'] as const,
+  gold: ['#f6d585', '#d4af37', '#8a6d1c'] as const,
+  hero: ['#ffffff', '#f6d585', '#d4af37'] as const,
+  dark: ['#12151f', '#060709'] as const,
+  pink: ['#f6d585', '#b38b2d'] as const,
+  mint: ['#ffffff', '#d4af37'] as const,
 }
 
 export const radius = {

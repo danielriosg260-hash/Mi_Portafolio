@@ -124,7 +124,17 @@ export function EducationSection() {
                 >
                   <MapPin size={11} style={{ verticalAlign: -1, marginRight: 5 }} />
                   {edu.location}
+                  {edu.period && (
+                    <span style={{ marginLeft: 8, color: '#38bdf8' }}>
+                      · {edu.period}
+                    </span>
+                  )}
                 </div>
+                {edu.description && (
+                  <p style={{ fontSize: 13.5, color: '#94a3b8', marginTop: 8, lineHeight: 1.5 }}>
+                    {edu.description}
+                  </p>
+                )}
               </div>
             </div>
 

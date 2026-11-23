@@ -9,41 +9,52 @@ export const PROFILE = {
   name: 'Daniel Ríos Giraldo',
   shortName: 'Daniel',
   initials: 'DR',
-  role: 'Desarrollador de Software',
+  role: 'Desarrollador de Software | Web & Mobile',
   tagline: 'Transformando ideas en soluciones digitales.',
-  subtitle: 'Desarrollo Web · Aplicaciones Móviles · Soluciones Tecnológicas',
+  subtitle:
+    'Desarrollo Web · Aplicaciones Móviles · Backend y Bases de Datos · Pruebas de Software',
   location: 'Medellín, Colombia',
-  status: 'Disponible para nuevos retos',
-  bio: 'Desarrollador de software enfocado en la creación de aplicaciones web y móviles. Me apasiona la tecnología, la resolución de problemas y el desarrollo de soluciones funcionales que aporten valor a las personas y a las organizaciones.',
+  status: 'Desarrollador practicante · Tecnoparque SENA',
+  stage: 'Etapa productiva (11 nov 2026 – 10 may 2027)',
+  bio: 'Soy desarrollador de software en formación profesional, con conocimientos en desarrollo web, aplicaciones móviles, bases de datos y pruebas de software. Actualmente realizo mi etapa productiva en Tecnoparque – Nodo SENA, donde continúo fortaleciendo mis habilidades técnicas y participando en procesos de desarrollo de soluciones tecnológicas. Me apasiona la tecnología, la programación y la creación de aplicaciones que permitan solucionar problemas reales.',
   description:
-    'Construyendo soluciones digitales que conectan ideas y tecnología.',
+    'Desarrollando ideas, aprendiendo tecnologías y construyendo soluciones digitales.',
+  objective:
+    'Continuar desarrollándome profesionalmente en el área de ingeniería y desarrollo de software, fortaleciendo mis conocimientos técnicos y adquiriendo experiencia en la construcción de aplicaciones web, móviles y soluciones tecnológicas que respondan a necesidades reales.',
 }
 
 export const CONTACT = {
-  // ⚠️ Reemplaza estos placeholders por tus datos reales.
-  email: 'daniel.rios.dev@gmail.com',
-  github: 'https://github.com/danielriosg',
-  linkedin: 'https://www.linkedin.com/in/daniel-rios-giraldo',
-  whatsapp: 'https://wa.me/573000000000',
-  whatsappLabel: '+57 300 000 0000',
-  githubLabel: 'github.com/danielriosg',
-  linkedinLabel: 'in/daniel-rios-giraldo',
+  email: 'danielriosg260@gmail.com',
+  github: 'https://github.com/danielriosg260-hash',
+  linkedin: 'https://www.linkedin.com/in/daniel-r%C3%ADos-267585325/',
+  whatsapp: 'https://wa.me/573114292229',
+  whatsappLabel: '+57 311 429 2229',
+  phone: '+57 311 429 2229',
+  phoneHref: 'tel:+573114292229',
+  githubLabel: 'github.com/danielriosg260-hash',
+  linkedinLabel: 'in/daniel-ríos-267585325',
 }
 
 export const ABOUT = {
-  title: 'Conoce un poco sobre mí',
+  title: 'Sobre mí',
+  subtitle:
+    'Conoce mi historia, mi formación y mi camino en el desarrollo de software.',
   paragraphs: [
-    'Soy Daniel Ríos Giraldo, desarrollador de software con formación en Análisis y Desarrollo de Software y experiencia práctica en el desarrollo de soluciones tecnológicas.',
-    'A lo largo de mi proceso de formación y experiencia laboral he trabajado en proyectos que me han permitido fortalecer mis conocimientos en programación, desarrollo web, aplicaciones móviles, bases de datos y pruebas de software.',
-    'Me interesa participar en proyectos que representen nuevos retos, aportar ideas, aprender nuevas tecnologías y construir soluciones que respondan a necesidades reales.',
-    'Me considero una persona responsable, comprometida, creativa y con disposición para aprender constantemente. Disfruto trabajar en equipo, compartir conocimientos y convertir ideas en proyectos funcionales.',
+    'Mi nombre es Daniel Ríos Giraldo, soy desarrollador de software y actualmente me encuentro en proceso de formación como Tecnólogo en Análisis y Desarrollo de Software en el Servicio Nacional de Aprendizaje (SENA).',
+    'Mi interés por la tecnología, la programación y la creación de soluciones digitales me ha llevado a desarrollar diferentes proyectos académicos y personales, en los cuales he tenido la oportunidad de trabajar con tecnologías de desarrollo web, backend, bases de datos, aplicaciones móviles y pruebas de software.',
+    'Actualmente me encuentro realizando mi etapa productiva en Tecnoparque – Nodo SENA, donde tengo la oportunidad de continuar fortaleciendo mis conocimientos y participar en procesos de desarrollo de software dentro de un entorno tecnológico y colaborativo.',
+    'Antes de iniciar mi camino en el desarrollo de software, estudié Técnico Auxiliar Administrativo y Financiero, formación que me permitió adquirir conocimientos relacionados con procesos administrativos, organización, atención al cliente y gestión empresarial. También tuve experiencia laboral en el sector de producción y atención al cliente, donde desarrollé habilidades como la responsabilidad, el trabajo en equipo, la comunicación y el compromiso.',
+    'Me considero una persona curiosa, creativa, responsable y perseverante. Me gusta aprender cosas nuevas, enfrentar retos, investigar cuando desconozco algo y buscar soluciones a los problemas que se presentan durante el desarrollo de un proyecto.',
+    'Mi objetivo es continuar creciendo profesionalmente en el área del desarrollo de software, adquirir experiencia en proyectos reales, fortalecer mis habilidades técnicas y contribuir a la creación de soluciones tecnológicas que generen un impacto positivo en las personas y las organizaciones.',
   ],
   facts: [
     { label: 'Ubicación', value: 'Medellín, Colombia' },
     { label: 'Profesión', value: 'Desarrollador de Software' },
-    { label: 'Área', value: 'Desarrollo Web y Móvil' },
-    { label: 'Formación', value: 'Análisis y Desarrollo de Software' },
-    { label: 'Intereses', value: 'Tecnología, programación e innovación' },
+    { label: 'Formación actual', value: 'Tecnólogo en ADSO — SENA' },
+    { label: 'Escenario de práctica', value: 'Tecnoparque – Nodo SENA' },
+    { label: 'Cargo actual', value: 'Desarrollador practicante' },
+    { label: 'Área profesional', value: 'Desarrollo Web y Móvil' },
+    { label: 'Intereses', value: 'Web, Mobile, Backend, Bases de Datos y QA' },
   ],
 }
 
@@ -60,35 +71,38 @@ export type Experience = {
 
 export const EXPERIENCE: Experience[] = [
   {
-    id: 'exp-actual',
-    role: 'Desarrollador de Software',
-    company: 'Empresa de desarrollo de software',
-    period: '2024 – Actualidad',
-    type: 'Tiempo completo',
+    id: 'exp-tecnoparque',
+    role: 'Desarrollador Practicante',
+    company: 'Tecnoparque – Nodo SENA',
+    period: '11 nov 2026 – 10 may 2027',
+    type: 'Etapa productiva / Prácticas profesionales',
     summary:
-      'Actualmente participo en procesos de desarrollo de software dentro de un entorno empresarial, fortaleciendo mis conocimientos técnicos y contribuyendo a la construcción de soluciones tecnológicas mediante el trabajo colaborativo, la implementación de funcionalidades y el desarrollo de proyectos.',
+      'Actualmente realizo mi etapa productiva en Tecnoparque – Nodo SENA, un entorno orientado a la innovación, el desarrollo tecnológico y la construcción de soluciones. Fortalezco mis conocimientos en análisis, desarrollo y construcción de aplicaciones de software, participando en procesos de soluciones web y móviles, implementación de funcionalidades, bases de datos y pruebas de software.',
     bullets: [
-      'Participación en el desarrollo de aplicaciones y soluciones tecnológicas.',
-      'Implementación de interfaces y funcionalidades utilizando las tecnologías asignadas.',
-      'Colaboración en el análisis, diseño y construcción de proyectos.',
-      'Uso de herramientas de desarrollo y control de versiones.',
-      'Aprendizaje y aplicación de buenas prácticas de desarrollo de software.',
+      'Desarrollo de aplicaciones web y aplicaciones móviles.',
+      'Implementación de interfaces y funcionalidades frontend y desarrollo backend.',
+      'Gestión y manejo de bases de datos relacionales y NoSQL.',
+      'Pruebas y validación de software para asegurar la calidad.',
+      'Análisis y solución de problemas dentro de un entorno colaborativo.',
+      'Aprendizaje y aplicación continua de nuevas tecnologías.',
     ],
     highlight: true,
   },
   {
-    id: 'exp-anterior',
+    id: 'exp-carinitos',
     role: 'Auxiliar de producción y atención al cliente',
     company: 'Cariñitos de Mamá',
-    period: 'Experiencia anterior',
-    type: 'Operativo / Atención al cliente',
+    period: 'Experiencia laboral previa',
+    type: 'Operativo / Servicio al cliente',
     summary:
-      'Experiencia en preparación de productos, atención al cliente y apoyo en actividades operativas, fortaleciendo habilidades de comunicación, organización, trabajo en equipo y responsabilidad.',
+      'Experiencia en preparación y elaboración de productos, apoyo en actividades operativas y atención al cliente, desarrollando habilidades clave de organización, comunicación, trabajo en equipo, responsabilidad y orientación al cliente.',
     bullets: [
-      'Atención y orientación al cliente.',
-      'Organización de tareas y trabajo en equipo.',
-      'Responsabilidad y compromiso con los procesos operativos.',
+      'Preparación y elaboración de productos, apoyando procesos de producción.',
+      'Atención y orientación a las necesidades de los clientes con calidad y servicio.',
+      'Organización del espacio de trabajo y colaboración activa en equipo.',
+      'Cumplimiento responsable y comprometido de las tareas asignadas.',
     ],
+    highlight: false,
   },
 ]
 
@@ -112,47 +126,92 @@ export const PROJECTS: Project[] = [
   {
     id: 'tecnocorte',
     name: 'TecnoCorte',
-    kind: 'Aplicación web · Gestión de citas',
-    year: '2025',
+    kind: 'Aplicación web · Gestión de citas para barberías',
+    year: '2025–2026',
     problem:
-      'La programación manual de citas en barberías genera dobles reservas, olvidos y una mala organización de la atención al cliente.',
+      'Muchas barberías realizan la programación de citas mediante WhatsApp, llamadas o por orden de llegada, lo que genera desorganización, dobles reservas, olvidos, tiempos de espera y pérdida de clientes.',
     solution:
-      'Aplicación web diseñada para facilitar la gestión de citas, servicios y horarios en barberías, brindando una herramienta digital que permite organizar la atención al cliente y mejorar la administración de las reservas.',
+      'Aplicación web diseñada para centralizar la gestión de citas, organizar los horarios disponibles, administrar los servicios ofrecidos y facilitar la interacción entre clientes y la barbería.',
     features: [
-      'Registro e inicio de sesión',
-      'Gestión de usuarios y roles',
-      'Agendamiento de citas',
-      'Consulta de disponibilidad',
-      'Administración de servicios',
-      'Gestión de reservas',
-      'Historial de citas',
+      'Registro, inicio y cierre de sesión seguro',
+      'Gestión de usuarios, roles, permisos y clientes',
+      'Agendamiento de citas y consulta de disponibilidad',
+      'Administración de servicios y gestión de reservas',
+      'Cancelación e historial de citas',
+      'Organización de horarios y agenda del barbero',
     ],
-    tech: ['Python', 'Django', 'HTML', 'CSS', 'JavaScript', 'Base de datos'],
-    status: 'En desarrollo',
-    gradient: ['#22d3ee', '#7c3aed'],
+    tech: ['Python', 'Django', 'HTML5', 'CSS3', 'JavaScript', 'Bases de datos', 'Git', 'GitHub'],
+    status: 'En evolución',
+    gradient: ['#f6d585', '#b38b2d'],
     emoji: '💈',
+    github: 'https://github.com/tecnocorte-barber/TecnoCorte_proyecto',
+    demo: 'https://tecno-corte-proyecto.vercel.app/',
   },
   {
     id: 'carrito',
-    name: 'Carrito de compras',
-    kind: 'Aplicación web · E-commerce',
+    name: 'Carrito de compras con API',
+    kind: 'Aplicación web · Frontend & API REST',
     year: '2025',
     problem:
-      'Consultar productos y calcular totales de forma manual es lento, tedioso y propenso a errores.',
+      'La consulta de productos, selección de artículos y cálculo de valores en una interfaz estática resulta poco práctica, lenta y propensa a errores.',
     solution:
-      'Aplicación web que permite consultar productos mediante una API, visualizar sus características y gestionar un carrito de compras de forma dinámica, persistiendo los datos entre sesiones.',
+      'Interfaz web interactiva que consume información de una API REST externa, permite seleccionar productos y gestionar un carrito de compras dinámico con persistencia entre sesiones.',
     features: [
-      'Consumo de API REST',
-      'Visualización de productos',
-      'Selección de productos',
-      'Carrito de compras dinámico',
-      'Cálculo de cantidades y valores',
-      'Persistencia con LocalStorage',
+      'Consumo de API REST e integración de datos externos',
+      'Consulta y visualización interactiva de productos',
+      'Agregar, modificar cantidades y eliminar productos',
+      'Cálculo dinámico automático de subtotales y total',
+      'Persistencia del carrito con LocalStorage',
     ],
-    tech: ['HTML', 'CSS', 'JavaScript', 'API REST', 'LocalStorage'],
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'API REST', 'LocalStorage'],
     status: 'Completado',
-    gradient: ['#a855f7', '#ec4899'],
+    gradient: ['#e5c158', '#8a6d1c'],
     emoji: '🛒',
+    github: 'https://github.com/danielriosg260-hash',
+  },
+  {
+    id: 'flutter',
+    name: 'Aplicaciones móviles con Flutter',
+    kind: 'Desarrollo Mobile · Flutter & Dart',
+    year: '2025–2026',
+    problem:
+      'La necesidad de construir experiencias móviles fluidas, nativas y multiplataforma tanto para Android como iOS a partir de una única base de código.',
+    solution:
+      'Desarrollo y aprendizaje de aplicaciones móviles utilizando Flutter y Dart, explorando la creación de interfaces nativas, navegación fluida entre pantallas y arquitectura de componentes modulares.',
+    features: [
+      'Interfaces nativas y multiplataforma',
+      'Navegación declarativa entre pantallas',
+      'Construcción de componentes reutilizables',
+      'Gestión de estado y arquitectura móvil',
+      'Implementación de funcionalidades interactivas',
+    ],
+    tech: ['Flutter', 'Dart', 'Android', 'iOS', 'Git'],
+    status: 'En evolución',
+    gradient: ['#ffd700', '#785b1a'],
+    emoji: '📱',
+    github: 'https://github.com/danielriosg260-hash',
+  },
+  {
+    id: 'selenium',
+    name: 'Automatización de pruebas (QA)',
+    kind: 'QA & Pruebas funcionales · Selenium',
+    year: '2025–2026',
+    problem:
+      'Las pruebas manuales consumen mucho tiempo y dificultan la validación repetitiva de los flujos críticos de las aplicaciones web, dejando pasar posibles errores.',
+    solution:
+      'Suite de pruebas automatizadas con Selenium WebDriver en Python que simula las acciones de los usuarios en navegadores web, validando formularios, autenticación y flujos clave.',
+    features: [
+      'Automatización de navegación en Chrome WebDriver',
+      'Validación de formularios e interacción con campos',
+      'Pruebas de inicio de sesión y autenticación',
+      'Verificación de funcionalidades y detección de errores',
+      'Ejecución de suites de pruebas funcionales repetibles',
+    ],
+    tech: ['Python', 'Selenium', 'Django', 'Chrome WebDriver'],
+    status: 'Completado',
+    gradient: ['#dfb15b', '#5c430e'],
+    emoji: '🧪',
+    github: 'https://github.com/danielriosg260-hash',
   },
   {
     id: 'node-mongo',
@@ -160,62 +219,21 @@ export const PROJECTS: Project[] = [
     kind: 'API backend · Usuarios y clientes',
     year: '2025',
     problem:
-      'Los datos de usuarios y clientes necesitaban un backend robusto, escalable y con operaciones CRUD organizadas.',
+      'Los datos de usuarios y clientes requerían un backend estructurado, seguro y con operaciones CRUD eficientes y persistentes.',
     solution:
-      'Aplicación backend orientada a la gestión de usuarios y clientes, utilizando Node.js y MongoDB para el almacenamiento y procesamiento de datos.',
+      'Aplicación backend orientada a la gestión de usuarios y clientes, utilizando Node.js y MongoDB para el almacenamiento y procesamiento estructurado de datos.',
     features: [
-      'Registro de usuarios',
-      'Gestión de clientes',
-      'Persistencia en MongoDB',
-      'Operaciones CRUD',
-      'Organización de rutas y controladores',
-      'Integración de funcionalidades backend',
+      'Registro y administración de usuarios y clientes',
+      'Persistencia en MongoDB con Mongoose',
+      'Operaciones CRUD completas y optimizadas',
+      'Organización modular de rutas y controladores',
+      'Pruebas y validación de endpoints HTTP',
     ],
     tech: ['Node.js', 'Express', 'MongoDB', 'Mongoose', 'JavaScript'],
     status: 'Completado',
-    gradient: ['#34d399', '#22d3ee'],
+    gradient: ['#f6d585', '#6b5314'],
     emoji: '🍃',
-  },
-  {
-    id: 'flutter',
-    name: 'Aplicaciones móviles',
-    kind: 'Desarrollo móvil · Flutter',
-    year: '2025',
-    problem:
-      'Las ideas debían llegar al bolsillo de los usuarios con una experiencia nativa y multiplataforma.',
-    solution:
-      'Desarrollo de aplicaciones móviles mediante Flutter, explorando la creación de interfaces, navegación, componentes y funcionalidades para dispositivos móviles.',
-    features: [
-      'Interfaces nativas multiplataforma',
-      'Navegación entre pantallas',
-      'Componentes reutilizables',
-      'Gestión de estado',
-    ],
-    tech: ['Flutter', 'Dart'],
-    status: 'En evolución',
-    gradient: ['#38bdf8', '#6366f1'],
-    emoji: '📱',
-  },
-  {
-    id: 'selenium',
-    name: 'Automatización de pruebas',
-    kind: 'QA · Selenium',
-    year: '2025',
-    problem:
-      'Las pruebas manuales consumían mucho tiempo y dejaban pasar errores en flujos críticos de las aplicaciones.',
-    solution:
-      'Implementación de pruebas automatizadas para validar el comportamiento de aplicaciones web mediante la automatización de acciones realizadas por el usuario en el navegador.',
-    features: [
-      'Automatización de navegación',
-      'Validación de formularios',
-      'Pruebas de inicio de sesión',
-      'Verificación de funcionalidades',
-      'Identificación de errores',
-    ],
-    tech: ['Python', 'Selenium', 'Django', 'Chrome WebDriver'],
-    status: 'Completado',
-    gradient: ['#f59e0b', '#ef4444'],
-    emoji: '🧪',
+    github: 'https://github.com/danielriosg260-hash',
   },
 ]
 
@@ -228,18 +246,18 @@ export type TechGroup = {
 export const TECH: TechGroup[] = [
   {
     title: 'Frontend',
-    color: '#22d3ee',
+    color: '#d4af37',
     items: [
       { name: 'HTML5', level: 'Experiencia práctica' },
       { name: 'CSS3', level: 'Experiencia práctica' },
       { name: 'JavaScript', level: 'Experiencia práctica' },
-      { name: 'EJS', level: 'Conocimientos' },
       { name: 'React', level: 'Experiencia práctica' },
+      { name: 'EJS', level: 'Conocimientos' },
     ],
   },
   {
     title: 'Backend',
-    color: '#a855f7',
+    color: '#e5c158',
     items: [
       { name: 'Python', level: 'Experiencia práctica' },
       { name: 'Django', level: 'Experiencia práctica' },
@@ -249,7 +267,7 @@ export const TECH: TechGroup[] = [
   },
   {
     title: 'Desarrollo móvil',
-    color: '#38bdf8',
+    color: '#f6d585',
     items: [
       { name: 'Flutter', level: 'Experiencia práctica' },
       { name: 'Dart', level: 'Conocimientos' },
@@ -259,65 +277,100 @@ export const TECH: TechGroup[] = [
   },
   {
     title: 'Bases de datos',
-    color: '#34d399',
+    color: '#dfb15b',
     items: [
-      { name: 'MySQL', level: 'Conocimientos' },
       { name: 'MongoDB', level: 'Experiencia práctica' },
+      { name: 'MySQL', level: 'Conocimientos' },
       { name: 'SQLite', level: 'Conocimientos' },
     ],
   },
   {
     title: 'Herramientas',
-    color: '#f472b6',
+    color: '#cda243',
     items: [
       { name: 'Git', level: 'Experiencia práctica' },
       { name: 'GitHub', level: 'Experiencia práctica' },
       { name: 'VS Code', level: 'Experiencia práctica' },
-      { name: 'Linux', level: 'Conocimientos' },
       { name: 'Postman', level: 'Experiencia práctica' },
+      { name: 'Linux', level: 'Conocimientos' },
     ],
   },
   {
     title: 'Pruebas y calidad',
-    color: '#fbbf24',
+    color: '#e6c66d',
     items: [
       { name: 'Selenium', level: 'Experiencia práctica' },
       { name: 'Pruebas funcionales', level: 'Experiencia práctica' },
-      { name: 'Casos de prueba', level: 'Conocimientos' },
       { name: 'Validación de aplicaciones', level: 'Experiencia práctica' },
+      { name: 'Casos de prueba', level: 'Conocimientos' },
     ],
   },
 ]
 
-export const EDUCATION = [
+export type EducationItem = {
+  id: string
+  title: string
+  place: string
+  location: string
+  period?: string
+  description?: string
+  topics: string[]
+  highlight?: boolean
+}
+
+export const EDUCATION: EducationItem[] = [
   {
     id: 'sena',
-    title: 'Tecnología en Análisis y Desarrollo de Software',
+    title: 'Tecnología en Análisis y Desarrollo de Software (ADSO)',
     place: 'Servicio Nacional de Aprendizaje — SENA',
     location: 'Medellín, Colombia',
+    period: '10 feb 2025 – Actualidad (Etapa productiva)',
+    description:
+      'Formación tecnológica orientada al análisis, diseño, desarrollo, implementación y mantenimiento de soluciones de software.',
     topics: [
-      'Desarrollo de software',
-      'Programación',
-      'Bases de datos',
-      'Análisis de requerimientos',
-      'Diseño de sistemas',
-      'Desarrollo web',
-      'Desarrollo móvil',
-      'Pruebas de software',
-      'Metodologías de desarrollo',
+      'Fundamentos y lógica de programación',
+      'Programación orientada a objetos',
+      'Análisis de requerimientos y diseño de software',
+      'Desarrollo frontend y desarrollo backend',
+      'Desarrollo de aplicaciones web y móviles',
+      'Bases de datos relacionales y NoSQL',
+      'APIs y servicios web',
+      'Pruebas de software y aseguramiento de calidad',
+      'Control de versiones con Git y GitHub',
+      'Metodologías de desarrollo y trabajo colaborativo',
     ],
     highlight: true,
   },
   {
     id: 'admin',
     title: 'Técnico Auxiliar Administrativo y Financiero',
-    place: 'Formación complementaria',
+    place: 'Formación técnica profesional',
     location: 'Medellín, Colombia',
+    period: 'Finalizado · 26 de noviembre de 2024',
+    description:
+      'Formación orientada a procesos administrativos, organizacionales, gestión empresarial y atención al cliente.',
     topics: [
-      'Procesos administrativos',
-      'Organización',
-      'Servicio al cliente',
-      'Gestión empresarial',
+      'Procesos administrativos y financieros',
+      'Organización documental y de información',
+      'Atención y servicio al cliente',
+      'Gestión empresarial y apoyo operativo',
+      'Comunicación organizacional',
+      'Responsabilidad y cumplimiento',
+    ],
+    highlight: false,
+  },
+  {
+    id: 'bachiller',
+    title: 'Bachiller Académico',
+    place: 'Educación secundaria',
+    location: 'Medellín, Colombia',
+    period: 'Finalizado · 26 de noviembre de 2024',
+    description:
+      'Formación académica integral, desarrollo de pensamiento lógico, analítico y comunicación.',
+    topics: [
+      'Formación académica integral',
+      'Pensamiento analítico y lógico',
+      'Comunicación y trabajo en equipo',
     ],
     highlight: false,
   },
@@ -326,25 +379,28 @@ export const EDUCATION = [
 export const SKILLS = {
   technical: [
     'Desarrollo de aplicaciones web',
-    'Desarrollo backend',
-    'Desarrollo frontend',
-    'Desarrollo de aplicaciones móviles',
-    'Bases de datos',
-    'Consumo de APIs',
-    'Control de versiones',
-    'Pruebas de software',
-    'Análisis de requerimientos',
-    'Resolución de problemas',
+    'Desarrollo frontend (HTML5, CSS3, JavaScript, React)',
+    'Desarrollo backend (Python, Django, Node.js, Express)',
+    'Desarrollo de aplicaciones móviles (Flutter, Dart)',
+    'Creación y consumo de APIs REST',
+    'Bases de datos (MongoDB, MySQL, SQLite)',
+    'Automatización de pruebas con Selenium',
+    'Pruebas funcionales y validación de software',
+    'Control de versiones con Git y GitHub',
+    'Análisis de requerimientos y resolución de problemas',
+    'Manejo de herramientas (VS Code, Postman, Linux)',
   ],
   personal: [
-    'Trabajo en equipo',
-    'Responsabilidad',
-    'Adaptabilidad',
-    'Comunicación',
-    'Organización',
-    'Aprendizaje continuo',
-    'Creatividad',
-    'Compromiso',
+    'Responsabilidad y compromiso',
+    'Trabajo en equipo y colaboración',
+    'Creatividad e innovación',
+    'Comunicación asertiva',
+    'Adaptabilidad y perseverancia',
+    'Organización y atención al detalle',
+    'Aprendizaje continuo y autónomo',
+    'Servicio y orientación al cliente',
+    'Pensamiento lógico',
+    'Disposición para afrontar nuevos retos',
   ],
 }
 

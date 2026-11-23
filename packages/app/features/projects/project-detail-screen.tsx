@@ -2,7 +2,7 @@ import { ScrollView, Pressable, Linking, View, Text, StyleSheet } from 'react-na
 import { LinearGradient } from 'expo-linear-gradient'
 import { MotiView } from 'moti'
 import { useRouter, useSearchParams } from 'solito/navigation'
-import { PROJECTS } from 'app/data/portfolio'
+import { PROJECTS, CONTACT } from 'app/data/portfolio'
 import { colors, radius } from 'app/theme'
 
 export function ProjectDetailScreen() {
@@ -86,10 +86,40 @@ export function ProjectDetailScreen() {
         </View>
       </View>
 
-      <View style={{ flexDirection: 'row', gap: 12 }}>
+      <View style={{ flexDirection: 'row', gap: 12, flexWrap: 'wrap' }}>
+        {project.demo && (
+          <Pressable
+            style={[
+              styles.btn,
+              {
+                backgroundColor: colors.gold,
+              },
+            ]}
+            onPress={() => Linking.openURL(project.demo!)}
+          >
+            <Text style={[styles.btnText, { color: '#060709', fontWeight: '700' }]}>
+              Ver Demo en vivo ↗
+            </Text>
+          </Pressable>
+        )}
+        {project.github && (
+          <Pressable
+            style={[
+              styles.btn,
+              {
+                backgroundColor: 'rgba(255,255,255,0.08)',
+                borderWidth: 1,
+                borderColor: 'rgba(212,175,55,0.3)',
+              },
+            ]}
+            onPress={() => Linking.openURL(project.github!)}
+          >
+            <Text style={styles.btnText}>Ver en GitHub ↗</Text>
+          </Pressable>
+        )}
         <Pressable
-          style={[styles.btn, { backgroundColor: colors.cyan }]}
-          onPress={() => Linking.openURL('mailto:daniel.rios.dev@gmail.com')}
+          style={[styles.btn, { backgroundColor: 'rgba(255,255,255,0.12)' }]}
+          onPress={() => Linking.openURL(`mailto:${CONTACT.email}`)}
         >
           <Text style={styles.btnText}>¡Hablemos de esto!</Text>
         </Pressable>

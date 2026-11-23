@@ -1,15 +1,19 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X, Sparkles } from 'lucide-react'
-import { NAV_SECTIONS, PROFILE } from 'app/data/portfolio'
+import { Sparkles, X } from 'lucide-react'
+import { PROFILE } from 'app/data/portfolio'
 
-export function Navbar() {
+interface NavbarProps {
+  is3DActive?: boolean
+  onToggle3D?: () => void
+  /** @deprecated usa onToggle3D */
+  onOpen3D?: () => void
+}
+
+export function Navbar({ is3DActive = false, onToggle3D, onOpen3D }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [progress, setProgress] = useState(0)
-  const [active, setActive] = useState<string>('inicio')
-  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -23,103 +27,59 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id)
-        })
-      },
-      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
-    )
-
-    NAV_SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-
-    return () => observer.disconnect()
-  }, [])
-
-  const go = (id: string) => {
-    setOpen(false)
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const goTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  const handleToggle = onToggle3D ?? onOpen3D
 
   return (
-    <>
-      <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-inner">
-          <button
-            className="logo"
-            onClick={() => go('inicio')}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}
-            aria-label="Ir al inicio"
-          >
-            <span className="logo-mark">{PROFILE.initials}</span>
-            <span>
-              {PROFILE.shortName}{' '}
-              <span className="gradient-text">Ríos</span>
-            </span>
-          </button>
+    <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
+      <div className="nav-inner">
+        <button
+          className="logo"
+          onClick={goTop}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}
+          aria-label="Ir al inicio"
+        >
+          <span className="logo-mark">{PROFILE.initials}</span>
+          <span>
+            {PROFILE.shortName}{' '}
+            <span className="gradient-text">Ríos</span>
+          </span>
+        </button>
 
-          <nav className="nav-links">
-            {NAV_SECTIONS.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => go(s.id)}
-                className={`nav-link ${active === s.id ? 'active' : ''}`}
-                style={{ border: 'none', cursor: 'pointer', font: 'inherit' }}
-              >
-                {s.label}
-              </button>
-            ))}
-          </nav>
-
-          <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-            <a className="btn btn-primary" href="#contacto" style={{ padding: '11px 20px', fontSize: 14 }}>
-              <Sparkles size={16} /> Hablemos
-            </a>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          {handleToggle && (
             <button
-              className="nav-burger"
-              onClick={() => setOpen((v) => !v)}
-              aria-label="Abrir menú"
+              className={is3DActive ? 'btn btn-primary' : 'btn btn-3d'}
+              onClick={handleToggle}
+              style={{ padding: '9px 20px', fontSize: 13.5 }}
+              title={
+                is3DActive
+                  ? 'Desactivar el Modo 3D y volver al modo normal'
+                  : 'Activar el Modo 3D de pantalla completa'
+              }
             >
-              {open ? <X size={20} /> : <Menu size={20} />}
+              {is3DActive ? (
+                <>
+                  <X size={14} /> Modo 3D Activo
+                </>
+              ) : (
+                <>
+                  <Sparkles size={14} /> Modo 3D ✨
+                </>
+              )}
             </button>
-          </div>
-        </div>
-
-        <div className="nav-progress" style={{ width: `${progress}%` }} />
-      </header>
-
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            className="mobile-menu"
-            initial={{ opacity: 0, y: -14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -14 }}
-            transition={{ duration: 0.28 }}
+          )}
+          <a
+            className="btn btn-primary"
+            href="#contacto"
+            style={{ padding: '9px 22px', fontSize: 13.5 }}
           >
-            <div className="container" style={{ display: 'grid', gap: 2 }}>
-              {NAV_SECTIONS.map((s) => (
-                <a
-                  key={s.id}
-                  href={`#${s.id}`}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    go(s.id)
-                  }}
-                  style={active === s.id ? { color: '#22d3ee' } : undefined}
-                >
-                  {s.label}
-                </a>
-              ))}
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </>
+            Hablemos
+          </a>
+        </div>
+      </div>
+
+      <div className="nav-progress" style={{ width: `${progress}%` }} />
+    </header>
   )
 }

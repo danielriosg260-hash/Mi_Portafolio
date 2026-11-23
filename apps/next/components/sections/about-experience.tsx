@@ -11,9 +11,9 @@ export function AboutSection() {
     <Section id="sobre-mi">
       <SectionHead
         eyebrow="Sobre mí"
-        title="Conoce un poco"
-        titleAccent="sobre mí"
-        subtitle="Perfil personal y profesional: de dónde vengo, en qué me enfoco y cómo trabajo."
+        title="Conoce mi historia,"
+        titleAccent="formación y camino"
+        subtitle={ABOUT.subtitle}
       />
 
       <div className="about-grid">
@@ -70,7 +70,7 @@ export function ExperienceSection() {
         eyebrow="Experiencia"
         title="Mi"
         titleAccent="trayectoria"
-        subtitle="Evolución profesional: del entorno operativo al desarrollo de software en un entorno empresarial."
+        subtitle="Evolución profesional: de la experiencia operativa al desarrollo de software en Tecnoparque – Nodo SENA."
       />
 
       <div className="timeline">

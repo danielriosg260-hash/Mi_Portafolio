@@ -221,7 +221,7 @@ function GlowOrb({
 const sectionPositions: { current: Record<string, number> } = {
   current: {},
 }
-const HEADER_OFFSET = 118
+const HEADER_OFFSET = 70
 
 export function HomeScreen() {
   const router = useRouter()
@@ -305,33 +305,6 @@ export function HomeScreen() {
               <Text style={styles.headerCtaText}>Hablemos</Text>
             </Pressable>
           </View>
-
-          {/* Chips de navegación por secciones */}
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.chipsRow}
-          >
-            {NAV_SECTIONS.map((s) => {
-              const isActive = active === s.id
-              return (
-                <Pressable
-                  key={s.id}
-                  onPress={() => goTo(s.id)}
-                  style={[styles.navChip, isActive && styles.navChipActive]}
-                >
-                  <Text
-                    style={[
-                      styles.navChipText,
-                      isActive && styles.navChipTextActive,
-                    ]}
-                  >
-                    {s.label}
-                  </Text>
-                </Pressable>
-              )
-            })}
-          </ScrollView>
         </View>
 
         {/* ---------------- CONTENIDO ---------------- */}
@@ -622,7 +595,9 @@ export function HomeScreen() {
               <Card key={edu.id} delay={60 * i}>
                 <Text style={styles.eduTitle}>{edu.title}</Text>
                 <Text style={styles.eduPlace}>{edu.place}</Text>
-                <Text style={styles.eduLocation}>📍 {edu.location}</Text>
+                <Text style={styles.eduLocation}>
+                  📍 {edu.location}{edu.period ? ` · ${edu.period}` : ''}
+                </Text>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 7, marginTop: 12 }}>
                   {edu.topics.map((t) => (
                     <Chip key={t} label={t} />
@@ -680,9 +655,10 @@ export function HomeScreen() {
                 style={StyleSheet.absoluteFill}
               />
               <Text style={styles.contactText}>
-                Estoy abierto a nuevas oportunidades, colaboraciones y proyectos
-                tecnológicos. Si tienes una idea, un proyecto o simplemente
-                quieres conectar, estaré encantado de conversar.
+                Estoy abierto a oportunidades profesionales, proyectos de desarrollo,
+                colaboraciones y nuevos retos tecnológicos que me permitan continuar
+                creciendo como desarrollador de software. Si tienes una propuesta, un
+                proyecto o deseas conocer más sobre mi trabajo, conversemos.
               </Text>
 
               <View style={{ gap: 12, marginTop: 20, width: '100%' }}>
@@ -710,7 +686,8 @@ export function HomeScreen() {
           </AnimatedSection>
 
           <Text style={styles.footer}>
-            © {new Date().getFullYear()} {PROFILE.name} · {PROFILE.location}
+            © {new Date().getFullYear()} {PROFILE.name} · {PROFILE.location}{'\n'}
+            Desarrollando ideas, aprendiendo tecnologías y construyendo soluciones digitales.
           </Text>
         </ScrollView>
       </View>

@@ -7,8 +7,9 @@ import {
   Code2,
   Rocket,
   ArrowDownRight,
-  Route,
   Mail,
+  Sparkles,
+  X,
 } from 'lucide-react'
 import { PROFILE, CONTACT, MARQUEE_TECH } from 'app/data/portfolio'
 
@@ -19,9 +20,18 @@ const HeroScene = dynamic(() => import('./hero-scene'), {
 
 const ease = [0.16, 1, 0.3, 1] as const
 
-export function Hero() {
+interface HeroProps {
+  is3DActive?: boolean
+  onToggle3D?: () => void
+  /** @deprecated usa onToggle3D */
+  onOpen3D?: () => void
+}
+
+export function Hero({ is3DActive = false, onToggle3D, onOpen3D }: HeroProps) {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+
+  const handleToggle = onToggle3D ?? onOpen3D
 
   return (
     <section id="inicio" className="hero">
@@ -33,7 +43,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease }}
           >
-            {PROFILE.role}
+            {PROFILE.status}
           </motion.span>
 
           <motion.h1
@@ -61,7 +71,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.32, ease }}
-            style={{ fontSize: 14, letterSpacing: '0.08em', color: '#67e8f9' }}
+            style={{ fontSize: 14, letterSpacing: '0.08em', color: '#f6d585' }}
           >
             {PROFILE.subtitle}
           </motion.p>
@@ -81,11 +91,24 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease }}
           >
+            {/* Botón de alternancia de Modo 3D */}
+            <button
+              className={is3DActive ? 'btn btn-primary' : 'btn btn-3d'}
+              onClick={handleToggle}
+            >
+              {is3DActive ? (
+                <>
+                  <X size={18} /> Salir del 3D
+                </>
+              ) : (
+                <>
+                  <Sparkles size={18} /> Mirar en 3D ✨
+                </>
+              )}
+            </button>
+
             <button className="btn btn-primary" onClick={() => scrollTo('proyectos')}>
               Explorar proyectos <ArrowDownRight size={18} />
-            </button>
-            <button className="btn btn-ghost" onClick={() => scrollTo('experiencia')}>
-              <Route size={17} /> Conocer mi trayectoria
             </button>
             <button className="btn btn-ghost" onClick={() => scrollTo('contacto')}>
               <Mail size={17} /> Contactarme
@@ -99,50 +122,68 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.65 }}
           >
             <span>
-              <MapPin size={15} color="#22d3ee" /> {PROFILE.location}
+              <MapPin size={15} color="#d4af37" /> {PROFILE.location}
             </span>
             <span>
-              <Code2 size={15} color="#a855f7" /> Desarrollo Web y Mobile
+              <Code2 size={15} color="#f6d585" /> {PROFILE.role}
             </span>
             <span>
-              <Rocket size={15} color="#ec4899" /> Participando en proyectos de
-              software
+              <Rocket size={15} color="#e5c158" /> {PROFILE.status}
             </span>
           </motion.div>
         </div>
 
+        {/* Vista previa 3D en el Hero — el badge cambia según el estado */}
         <motion.div
           className="hero-visual"
-          initial={{ opacity: 0, scale: 0.86, rotateX: 12 }}
+          initial={{ opacity: 0, scale: 0.88, rotateX: 10 }}
           animate={{ opacity: 1, scale: 1, rotateX: 0 }}
           transition={{ duration: 1.1, delay: 0.25, ease }}
-          style={{
-            border: '1px solid rgba(255,255,255,0.09)',
-            background:
-              'radial-gradient(circle at 50% 45%, rgba(34,211,238,0.12), rgba(4,5,10,0.9) 70%)',
-            boxShadow:
-              '0 40px 120px -60px rgba(34,211,238,0.9), inset 0 0 90px rgba(124,58,237,0.18)',
-          }}
+          onClick={handleToggle}
+          title={
+            is3DActive
+              ? 'Haz clic para volver al modo normal'
+              : 'Haz clic para activar el Modo 3D de pantalla completa'
+          }
+          style={{ cursor: 'pointer' }}
         >
-          <HeroScene />
+          <HeroScene onExpand={handleToggle} />
           <div
             style={{
               position: 'absolute',
-              left: 16,
-              bottom: 16,
+              left: 14,
+              bottom: 14,
+              right: 14,
               zIndex: 2,
               fontFamily: 'var(--font-mono)',
               fontSize: 11,
-              letterSpacing: '0.2em',
-              color: '#67e8f9',
-              padding: '7px 13px',
+              letterSpacing: '0.14em',
+              color: is3DActive ? '#060709' : '#f6d585',
+              padding: '8px 14px',
               borderRadius: 999,
-              background: 'rgba(4,5,10,0.7)',
-              border: '1px solid rgba(34,211,238,0.35)',
-              backdropFilter: 'blur(8px)',
+              background: is3DActive
+                ? 'linear-gradient(135deg, #f6d585 0%, #d4af37 100%)'
+                : 'rgba(6, 7, 12, 0.82)',
+              border: '1px solid rgba(212, 175, 55, 0.55)',
+              backdropFilter: 'blur(10px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.6)',
+              transition: 'background 0.4s, color 0.4s',
             }}
           >
-            ● WEBGL · 3D EN TIEMPO REAL
+            {is3DActive ? (
+              <>
+                <span>✦ MODO 3D ACTIVO</span>
+                <span style={{ fontWeight: 700 }}>CLIC PARA CERRAR ✕</span>
+              </>
+            ) : (
+              <>
+                <span>● VISTA PREVIA 3D</span>
+                <span style={{ color: '#ffffff', fontWeight: 600 }}>PULSA PARA EXPANDIR ↗</span>
+              </>
+            )}
           </div>
         </motion.div>
       </div>

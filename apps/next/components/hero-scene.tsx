@@ -1,168 +1,128 @@
 'use client'
 
-import { useMemo, useRef } from 'react'
+import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import {
-  Float,
-  MeshDistortMaterial,
-  Sparkles,
-  Stars,
-  Trail,
-} from '@react-three/drei'
+import { Float, Sparkles, Stars } from '@react-three/drei'
 import type { Group, Mesh } from 'three'
 import * as THREE from 'three'
 
-const CYAN = '#22d3ee'
-const VIOLET = '#a855f7'
-const MAGENTA = '#ec4899'
+const GOLD = '#d4af37'
+const GOLD_LIGHT = '#f6d585'
+const GOLD_DARK = '#8a6d1c'
 
-/** Cristal central distorsionado — el corazón de la escena */
-function CoreCrystal() {
+/** Monolito arquitectónico central de titanio y oro */
+function ArchMonolith() {
   const mesh = useRef<Mesh>(null)
 
   useFrame(({ clock }) => {
     if (!mesh.current) return
     const t = clock.getElapsedTime()
-    mesh.current.rotation.y = t * 0.25
-    mesh.current.rotation.x = Math.sin(t * 0.4) * 0.25
-    mesh.current.position.y = Math.sin(t * 0.8) * 0.12
+    mesh.current.rotation.y = t * 0.3
+    mesh.current.rotation.x = Math.sin(t * 0.4) * 0.08
   })
 
   return (
-    <mesh ref={mesh} castShadow>
-      <icosahedronGeometry args={[1.35, 12]} />
-      <MeshDistortMaterial
-        color={CYAN}
-        emissive={new THREE.Color('#0b3b46')}
-        emissiveIntensity={0.75}
-        roughness={0.15}
-        metalness={0.85}
-        distort={0.42}
-        speed={1.6}
-      />
-    </mesh>
+    <group>
+      {/* Cuerpo principal del monolito */}
+      <mesh ref={mesh} castShadow>
+        <boxGeometry args={[1.5, 3.2, 1.5]} />
+        <meshStandardMaterial
+          color="#0a0c12"
+          roughness={0.2}
+          metalness={0.9}
+        />
+      </mesh>
+
+      {/* Bisel / Borde dorado flotante exterior */}
+      <mesh>
+        <boxGeometry args={[1.54, 3.24, 1.54]} />
+        <meshBasicMaterial
+          color={GOLD}
+          wireframe
+          transparent
+          opacity={0.35}
+        />
+      </mesh>
+    </group>
   )
 }
 
-/** Jaula wireframe que envuelve el cristal */
-function WireShell() {
-  const ref = useRef<Mesh>(null)
-
-  useFrame(({ clock }) => {
-    if (!ref.current) return
-    ref.current.rotation.y = -clock.getElapsedTime() * 0.18
-    ref.current.rotation.z = clock.getElapsedTime() * 0.08
-  })
-
-  return (
-    <mesh ref={ref}>
-      <sphereGeometry args={[2.15, 26, 26]} />
-      <meshBasicMaterial
-        color={VIOLET}
-        wireframe
-        transparent
-        opacity={0.16}
-      />
-    </mesh>
-  )
-}
-
-/** Anillos orbitando alrededor del cristal */
-function OrbitRings() {
+/** Anillos orbitales concéntricos de oro pulido */
+function GoldenRings() {
   const group = useRef<Group>(null)
 
   useFrame(({ clock }) => {
     if (!group.current) return
     const t = clock.getElapsedTime()
-    group.current.rotation.x = 0.6 + Math.sin(t * 0.3) * 0.15
+    group.current.rotation.x = 0.5 + Math.sin(t * 0.25) * 0.12
     group.current.rotation.y = t * 0.35
   })
 
   return (
     <group ref={group}>
       <mesh>
-        <torusGeometry args={[2.7, 0.035, 16, 140]} />
+        <torusGeometry args={[2.5, 0.03, 16, 120]} />
         <meshStandardMaterial
-          color={CYAN}
-          emissive={new THREE.Color(CYAN)}
-          emissiveIntensity={2.4}
-          roughness={0.2}
+          color={GOLD_LIGHT}
+          emissive={new THREE.Color(GOLD_DARK)}
+          emissiveIntensity={1.2}
+          roughness={0.25}
+          metalness={0.95}
         />
       </mesh>
-      <mesh rotation={[Math.PI / 2.4, 0, 0.7]}>
-        <torusGeometry args={[3.15, 0.028, 16, 140]} />
+      <mesh rotation={[Math.PI / 2.6, 0.4, 0.8]}>
+        <torusGeometry args={[2.95, 0.022, 16, 120]} />
         <meshStandardMaterial
-          color={MAGENTA}
-          emissive={new THREE.Color(MAGENTA)}
-          emissiveIntensity={2}
-          roughness={0.2}
-        />
-      </mesh>
-      <mesh rotation={[Math.PI / 1.6, 0.5, 0]}>
-        <torusGeometry args={[3.5, 0.02, 16, 150]} />
-        <meshStandardMaterial
-          color={VIOLET}
-          emissive={new THREE.Color(VIOLET)}
-          emissiveIntensity={1.8}
-          roughness={0.2}
+          color={GOLD}
+          emissive={new THREE.Color(GOLD_DARK)}
+          emissiveIntensity={0.9}
+          roughness={0.3}
+          metalness={0.9}
         />
       </mesh>
     </group>
   )
 }
 
-/** Satélites pequeños que orbitan con estela */
-function Satellites() {
-  const items = useMemo(
-    () => [
-      { r: 3.0, speed: 0.55, size: 0.16, color: CYAN, offset: 0 },
-      { r: 3.6, speed: -0.4, size: 0.13, color: MAGENTA, offset: 2 },
-      { r: 4.1, speed: 0.3, size: 0.11, color: VIOLET, offset: 4 },
-    ],
-    []
-  )
-
+/** Satélites de datos que orbitan el monolito */
+function GoldenNodes() {
   const group = useRef<Group>(null)
 
   useFrame(({ clock }) => {
     if (!group.current) return
+    const t = clock.getElapsedTime()
     group.current.children.forEach((child, i) => {
-      const cfg = items[i]
-      if (!cfg) return
-      const t = clock.getElapsedTime() * cfg.speed + cfg.offset
+      const angle = t * 0.6 + (i * Math.PI * 2) / 4
+      const radius = 2.6
       child.position.set(
-        Math.cos(t) * cfg.r,
-        Math.sin(t * 1.4) * 0.9,
-        Math.sin(t) * cfg.r
+        Math.cos(angle) * radius,
+        Math.sin(t * 1.2 + i) * 0.45,
+        Math.sin(angle) * radius
       )
+      child.rotation.y = t * 1.5
+      child.rotation.x = t * 0.8
     })
   })
 
   return (
     <group ref={group}>
-      {items.map((it, i) => (
-        <Trail
-          key={i}
-          width={2.4}
-          length={5}
-          color={it.color}
-          attenuation={(t) => t * t}
-        >
-          <mesh>
-            <sphereGeometry args={[it.size, 20, 20]} />
-            <meshStandardMaterial
-              color={it.color}
-              emissive={new THREE.Color(it.color)}
-              emissiveIntensity={3}
-            />
-          </mesh>
-        </Trail>
+      {[0, 1, 2, 3].map((idx) => (
+        <mesh key={idx}>
+          <octahedronGeometry args={[0.16, 0]} />
+          <meshStandardMaterial
+            color={GOLD_LIGHT}
+            emissive={new THREE.Color(GOLD)}
+            emissiveIntensity={1.8}
+            metalness={0.9}
+            roughness={0.1}
+          />
+        </mesh>
       ))}
     </group>
   )
 }
 
-/** Rotación suave siguiendo el puntero (parallax) */
+/** Parallax suave con el puntero */
 function ParallaxRig({ children }: { children: React.ReactNode }) {
   const ref = useRef<Group>(null)
 
@@ -171,7 +131,7 @@ function ParallaxRig({ children }: { children: React.ReactNode }) {
     const t = clock.getElapsedTime()
     ref.current.rotation.y = THREE.MathUtils.lerp(
       ref.current.rotation.y,
-      pointer.x * 0.35 + Math.sin(t * 0.2) * 0.05,
+      pointer.x * 0.4 + Math.sin(t * 0.15) * 0.06,
       0.05
     )
     ref.current.rotation.x = THREE.MathUtils.lerp(
@@ -184,47 +144,51 @@ function ParallaxRig({ children }: { children: React.ReactNode }) {
   return <group ref={ref}>{children}</group>
 }
 
-export default function HeroScene() {
+export default function HeroScene({ onExpand }: { onExpand?: () => void }) {
   return (
-    <Canvas
-      dpr={[1, 1.8]}
-      camera={{ position: [0, 0.4, 8.2], fov: 45 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      style={{ width: '100%', height: '100%' }}
+    <div
+      onClick={onExpand}
+      style={{ width: '100%', height: '100%', position: 'relative' }}
+      title="Haz clic para abrir el Modo 3D en pantalla completa"
     >
-      <color attach="background" args={['#05070e']} />
-      <fog attach="fog" args={['#05070e', 9, 18]} />
+      <Canvas
+        dpr={[1, 1.8]}
+        camera={{ position: [0, 0.2, 7.8], fov: 45 }}
+        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+        style={{ width: '100%', height: '100%' }}
+      >
+        <color attach="background" args={['#060709']} />
+        <fog attach="fog" args={['#060709', 8, 16]} />
 
-      <ambientLight intensity={0.5} />
-      <pointLight position={[6, 5, 5]} intensity={70} color={CYAN} />
-      <pointLight position={[-6, -3, 4]} intensity={55} color={VIOLET} />
-      <pointLight position={[0, 6, -6]} intensity={40} color={MAGENTA} />
-      <directionalLight position={[0, 8, 4]} intensity={1.2} color="#ffffff" />
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[4, 8, 5]} intensity={2.2} color="#fff6dd" />
+        <pointLight position={[-5, -2, 3]} intensity={45} color={GOLD} />
+        <pointLight position={[5, 4, -4]} intensity={35} color={GOLD_LIGHT} />
 
-      <ParallaxRig>
-        <Float
-          speed={1.6}
-          rotationIntensity={0.45}
-          floatIntensity={1.1}
-          floatingRange={[-0.25, 0.25]}
-        >
-          <CoreCrystal />
-          <WireShell />
-          <OrbitRings />
-          <Satellites />
-        </Float>
-      </ParallaxRig>
+        <ParallaxRig>
+          <Float
+            speed={1.5}
+            rotationIntensity={0.3}
+            floatIntensity={0.8}
+            floatingRange={[-0.2, 0.2]}
+          >
+            <ArchMonolith />
+            <GoldenRings />
+            <GoldenNodes />
+          </Float>
+        </ParallaxRig>
 
-      <Sparkles count={90} scale={11} size={2.6} speed={0.35} color="#a5f3fc" />
-      <Stars
-        radius={60}
-        depth={40}
-        count={1800}
-        factor={3.2}
-        saturation={0}
-        fade
-        speed={0.6}
-      />
-    </Canvas>
+        <Sparkles count={80} scale={9} size={2.8} speed={0.3} color="#f6d585" />
+        <Stars
+          radius={50}
+          depth={35}
+          count={1200}
+          factor={2.8}
+          saturation={0}
+          fade
+          speed={0.5}
+        />
+      </Canvas>
+    </div>
   )
 }

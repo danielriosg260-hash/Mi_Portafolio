@@ -113,15 +113,33 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         <div className="project-foot">
           <span className={statusClass(project.status)}>● {project.status}</span>
-          <div style={{ display: 'flex', gap: 8 }}>
-            {project.github && (
-              <a className="icon-btn" href={project.github} target="_blank" rel="noreferrer" aria-label="Ver código">
-                <GithubIcon size={17} />
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            {project.demo && (
+              <a
+                className="btn btn-primary"
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  padding: '7px 14px',
+                  fontSize: 12.5,
+                  borderRadius: 999,
+                  gap: 6,
+                }}
+              >
+                <ExternalLink size={13} /> Demo en vivo
               </a>
             )}
-            {project.demo && (
-              <a className="icon-btn" href={project.demo} target="_blank" rel="noreferrer" aria-label="Ver demo">
-                <ExternalLink size={17} />
+            {project.github && (
+              <a
+                className="icon-btn"
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Ver código en GitHub"
+                title="Ver código en GitHub"
+              >
+                <GithubIcon size={17} />
               </a>
             )}
             {!project.github && !project.demo && (
