@@ -2,14 +2,5 @@
   "framework": "nextjs",
   "buildCommand": "yarn build",
   "outputDirectory": ".next/standalone",
-  "installCommand": "yarn install",
-  "frameworkOptions": {
-    "nextjs": {
-      "rootDirectory": "apps/next",
-      "moduleResolution": "bundler"
-    }
-  },
-  "env": {
-    "NEXT_TRANSPILE_MODULES": "true"
-  }
+  "installCommand": "yarn install"
 }
