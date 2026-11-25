@@ -1,0 +1,13 @@
+{
+  "projectName": "Mi Portafolio - Daniel Ros Giraldo",
+  "framework": "nextjs",
+  "buildCommand": "yarn build",
+  "outputDirectory": ".next/standalone",
+  "installCommand": "yarn install",
+  "monoRepo": true,
+  "frameworkOptions": {
+    "nextjs": {
+      "rootDirectory": "apps/next"
+    }
+  }
+}
