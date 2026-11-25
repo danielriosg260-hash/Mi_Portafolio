@@ -99,51 +99,6 @@ export function Hero({ is3DActive = false, onToggle3D, onOpen3D }: HeroProps) {
               <Mail size={17} /> Contactarme
             </button>
           </motion.div>
-
-          {/* Vista previa 3D en el Hero — el badge cambia según el estado */}
-          <motion.div
-            className="hero-visual"
-            initial={{ opacity: 0, scale: 0.88, rotateX: 10 }}
-            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-            transition={{ duration: 1.1, delay: 0.25, ease }}
-            style={{ cursor: 'pointer' }}
-          >
-            <HeroScene />
-            <div
-              style={{
-                position: 'absolute',
-                left: 14,
-                bottom: 14,
-                right: 14,
-                zIndex: 2,
-                fontFamily: 'var(--font-mono)',
-                fontSize: 11,
-                letterSpacing: '0.14em',
-                color: '#f6d585',
-                padding: '8px 14px',
-                borderRadius: 999,
-                background: 'rgba(6, 7, 12, 0.82)',
-                border: '1px solid rgba(212, 175, 55, 0.55)',
-                backdropFilter: 'blur(10px)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.6)',
-              }}
-            >
-              <span>●</span>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="marquee" style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
-          <div className="marquee-track">
-            {[...MARQUEE_TECH, ...MARQUEE_TECH].map((t, i) => (
-              <span className="marquee-item" key={`${t}-${i}`}>
-                {t}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>
