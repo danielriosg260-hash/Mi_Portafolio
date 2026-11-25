@@ -1,20 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Transpilar react-native para evitar errores de types en Vercel
-  transpileModules: [
-    'react-native',
-    'react-native-reanimated',
-    'react-native-gesture-handler',
-    'react-native-safe-area-context',
-    'react-native-screens',
-    'react-native-web',
-  ],
-  // Otras configuraciones
+  // Forzar transpilar react-native para evitar errores de tipos en Vercel
+  transpileModules: ['react-native', 'react-native-reanimated', 'react-native-gesture-handler', 'react-native-safe-area-context', 'react-native-screens', 'react-native-web'],
+  // Configuración de imágenes
   images: {
     domains: [],
   },
-  // Configurar el directorio raíz para el monorepo
+  // Configuración webpack para módulos
   webpack: (config, { isServer }) => {
     if (isServer) {
       config.resolve.extensionJs = ['.js', '.tsx', '.ts'];
