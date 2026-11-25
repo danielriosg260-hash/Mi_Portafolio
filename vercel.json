@@ -1,6 +1,5 @@
 {
   "framework": "nextjs",
   "buildCommand": "yarn build",
-  "outputDirectory": ".next/standalone",
   "installCommand": "yarn install"
 }
