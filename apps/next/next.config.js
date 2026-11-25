@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: [
+    'react-native',
+    'react-native-web',
+    'solito',
+    'moti',
+    'app',
+  ],
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),

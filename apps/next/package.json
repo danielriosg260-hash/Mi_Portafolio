@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@types/node": "17.0.21",
+    "@types/react-native-web": "^0.19.3",
     "@types/three": "^0",
     "eslint-config-next": "13.2.0"
   }
