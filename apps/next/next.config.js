@@ -1,16 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack: (config, { isServer }) => {
-    // Alias para que react-native se resuelva como react-native-web
+  webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
+      'react-native$': 'react-native-web',
       'react-native': 'react-native-web',
     }
-    if (isServer) {
-      config.resolve.extensions = ['.js', '.tsx', '.ts'];
-    }
-    return config;
+    config.resolve.extensions = [
+      '.web.js',
+      '.web.jsx',
+      '.web.ts',
+      '.web.tsx',
+      ...config.resolve.extensions,
+    ]
+    return config
   },
 }
 
