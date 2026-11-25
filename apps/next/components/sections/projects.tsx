@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { AlertTriangle, Lightbulb, ExternalLink, Layers } from 'lucide-react'
+import { AlertTriangle, Lightbulb, ExternalLink, Layers, ShoppingBag, Smartphone, FlaskConical, Database } from 'lucide-react'
 import { GithubIcon } from '../icons'
 import { PROJECTS, type Project } from 'app/data/portfolio'
 import { Reveal, staggerContainer, staggerItem } from '../reveal'
@@ -22,6 +22,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         style={{
           background: `linear-gradient(140deg, ${project.gradient[0]}22, ${project.gradient[1]}22)`,
           borderBottom: '1px solid rgba(255,255,255,0.07)',
+          borderRadius: 'lg',
+          overflow: 'hidden',
         }}
       >
         <span
@@ -45,14 +47,118 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           }}
         />
         <span className="project-emoji" role="img" aria-label={project.name}>
-          {project.emoji}
-        </span>
+            {project.id === 'tecnocorte' ? (
+              <img
+                src="/tecnocorte-logo.jpg"
+                alt={project.name}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  borderRadius: 'inherit',
+                  filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.3))',
+                  mask: 'linear-gradient(to bottom right, rgba(0,0,0,1) 40%, rgba(0,0,0,0.3) 100%)',
+                }}
+              />
+            ) : project.id === 'carrito' ? (
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: '6px',
+                  background: 'rgba(30, 30, 35, 0.8)',
+                  border: '1px solid rgba(212, 175, 55, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: 'auto',
+                }}
+              >
+                <ShoppingBag
+                  style={{
+                    width: 24,
+                    height: 24,
+                    color: '#d4af37',
+                  }}
+                />
+              </div>
+            ) : project.id === 'flutter' ? (
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: '6px',
+                  background: 'rgba(30, 30, 35, 0.8)',
+                  border: '1px solid rgba(212, 175, 55, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: 'auto',
+                }}
+              >
+                <Smartphone
+                  style={{
+                    width: 24,
+                    height: 24,
+                    color: '#d4af37',
+                  }}
+                />
+              </div>
+            ) : project.id === 'selenium' ? (
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: '6px',
+                  background: 'rgba(30, 30, 35, 0.8)',
+                  border: '1px solid rgba(212, 175, 55, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: 'auto',
+                }}
+              >
+                <FlaskConical
+                  style={{
+                    width: 24,
+                    height: 24,
+                    color: '#d4af37',
+                  }}
+                />
+              </div>
+            ) : project.id === 'node-mongo' ? (
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: '6px',
+                  background: 'rgba(30, 30, 35, 0.8)',
+                  border: '1px solid rgba(212, 175, 55, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: 'auto',
+                }}
+              >
+                <Database
+                  style={{
+                    width: 24,
+                    height: 24,
+                    color: '#d4af37',
+                  }}
+                />
+              </div>
+            ) : (
+              <span>{project.emoji}</span>
+            )}
+          </span>
         <span
           className="mono"
           style={{
             position: 'absolute',
-            top: 14,
-            right: 16,
+            top: 20,
+            right: 20,
             fontSize: 11,
             letterSpacing: '0.2em',
             color: 'rgba(255,255,255,0.65)',
