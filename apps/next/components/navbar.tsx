@@ -47,28 +47,6 @@ export function Navbar({ is3DActive = false, onToggle3D, onOpen3D }: NavbarProps
         </button>
 
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          {handleToggle && (
-            <button
-              className={is3DActive ? 'btn btn-primary' : 'btn btn-3d'}
-              onClick={handleToggle}
-              style={{ padding: '9px 20px', fontSize: 13.5 }}
-              title={
-                is3DActive
-                  ? 'Desactivar el Modo 3D y volver al modo normal'
-                  : 'Activar el Modo 3D de pantalla completa'
-              }
-            >
-              {is3DActive ? (
-                <>
-                  <X size={14} /> Modo 3D Activo
-                </>
-              ) : (
-                <>
-                  <Sparkles size={14} /> Modo 3D ✨
-                </>
-              )}
-            </button>
-          )}
           <a
             className="btn btn-primary"
             href="#contacto"
@@ -78,8 +56,6 @@ export function Navbar({ is3DActive = false, onToggle3D, onOpen3D }: NavbarProps
           </a>
         </div>
       </div>
-
-      <div className="nav-progress" style={{ width: `${progress}%` }} />
     </header>
   )
 }
