@@ -127,39 +127,39 @@ export function ContactSection() {
               }
             }}
           >
-            <div className="max-w-xl mx-auto rounded-2xl border border-white/10 p-8 space-y-6">
+            <div className="max-w-xl mx-auto mt-8 p-6 rounded-2xl border border-amber-500/20 bg-[#14110c]/90 flex flex-col gap-4">
               {/* Nombre */}
               <div>
-                <label className="block text-gray-300 text-sm font-medium mb-1.5">Nombre</label>
+                <label className="block text-neutral-300 text-sm font-medium mb-1.5 text-left">Nombre</label>
                 <input
                   type="text"
                   name="name"
                   required
-                  className="w-full bg-black/40 rounded-xl border border-white/15 transition-colors placeholder:text-gray-300 placeholder:opacity-60 focus:border-amber-400/70 focus:outline-none focus:ring-1 focus:ring-amber-400/40"
+                  className="bg-[#0b0906] text-white rounded-xl border border-amber-500/25 block w-full focus:border-amber-400 focus:outline-none px-4 py-3"
                   placeholder="Tu nombre"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label className="block text-gray-300 text-sm font-medium mb-1.5">Email</label>
+                <label className="block text-neutral-300 text-sm font-medium mb-1.5 text-left">Email</label>
                 <input
                   type="email"
                   name="email"
                   required
-                  className="w-full bg-black/40 rounded-xl border border-white/15 transition-colors placeholder:text-gray-300 placeholder:opacity-60 focus:border-amber-400/70 focus:outline-none focus:ring-1 focus:ring-amber-400/40"
+                  className="bg-[#0b0906] text-white rounded-xl border border-amber-500/25 block w-full focus:border-amber-400 focus:outline-none px-4 py-3"
                   placeholder="tu@email.com"
                 />
               </div>
 
               {/* Mensaje */}
               <div>
-                <label className="block text-gray-300 text-sm font-medium mb-1.5">Mensaje</label>
+                <label className="block text-neutral-300 text-sm font-medium mb-1.5 text-left">Mensaje</label>
                 <textarea
                   name="message"
                   rows={4}
                   required
-                  className="w-full bg-black/40 rounded-xl border border-white/15 transition-colors resize-y placeholder:text-gray-300 placeholder:opacity-60 focus:border-amber-400/70 focus:outline-none focus:ring-1 focus:ring-amber-400/40"
+                  className="bg-[#0b0906] text-white rounded-xl border border-amber-500/25 block w-full focus:border-amber-400 focus:outline-none px-4 py-3 resize-y"
                   placeholder="Tu mensaje..."
                 ></textarea>
               </div>
@@ -168,7 +168,7 @@ export function ContactSection() {
               <div>
                 <button
                   type="submit"
-                  className="w-full bg-amber-500/10 border border-amber-500/30 rounded-md px-8 py-2.5 text-sm font-medium text-amber-400 hover:bg-amber-500/20 hover:border-amber-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="rounded-full px-6 py-3 font-medium text-sm text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 hover:border-amber-500 transition-all"
                 >
                   Enviar mensaje
                 </button>
