@@ -26,7 +26,7 @@ export function ContactForm({ onSuccess, onError }: ContactFormProps = {}) {
     setStatus('idle')
 
     try {
-      const response = await fetch('https://formspree.io/f/your-form-endpoint', {
+      const response = await fetch('https://formspree.io/f/mwlojkaw', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
