@@ -3,6 +3,11 @@
    Paleta: Negro Obsidiana + Oro Pulido/Champagne + Blanco Puro
    ============================================================ */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root can stay as is, or we can move it after tailwind */
 :root {
   --bg: #060709;
   --bg-2: #0b0d13;
