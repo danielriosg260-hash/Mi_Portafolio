@@ -16,7 +16,7 @@ export const PROFILE = {
   location: 'Medellín, Colombia',
   status: 'Desarrollador practicante · Tecnoparque SENA',
   stage: 'Etapa productiva (11 nov 2026 – 10 may 2027)',
-  bio: 'Soy desarrollador de software en formación profesional, con conocimientos en desarrollo web, aplicaciones móviles, bases de datos y pruebas de software. Actualmente realizo mi etapa productiva en Tecnoparque – Nodo SENA, donde continúo fortaleciendo mis habilidades técnicas y participando en procesos de desarrollo de soluciones tecnológicas. Me apasiona la tecnología, la programación y la creación de aplicaciones que permitan solucionar problemas reales.',
+  bio: 'Desarrollador de software Full-Stack con experiencia en desarrollo web, aplicaciones móviles, arquitectura de bases de datos y aseguramiento de calidad (QA). Actualmente integro el equipo de desarrollo en Tecnoparque – Nodo SENA, participando en la creación de soluciones tecnológicas escalables. Enfocado en transformar problemas reales en código limpio, funcional y bien estructurado.',
   description:
     'Desarrollando ideas, aprendiendo tecnologías y construyendo soluciones digitales.',
   objective:
@@ -40,12 +40,10 @@ export const ABOUT = {
   subtitle:
     'Conoce mi historia, mi formación y mi camino en el desarrollo de software.',
   paragraphs: [
-    'Mi nombre es Daniel Ríos Giraldo, soy desarrollador de software y actualmente me encuentro en proceso de formación como Tecnólogo en Análisis y Desarrollo de Software en el Servicio Nacional de Aprendizaje (SENA).',
-    'Mi interés por la tecnología, la programación y la creación de soluciones digitales me ha llevado a desarrollar diferentes proyectos académicos y personales, en los cuales he tenido la oportunidad de trabajar con tecnologías de desarrollo web, backend, bases de datos, aplicaciones móviles y pruebas de software.',
-    'Actualmente me encuentro realizando mi etapa productiva en Tecnoparque – Nodo SENA, donde tengo la oportunidad de continuar fortaleciendo mis conocimientos y participar en procesos de desarrollo de software dentro de un entorno tecnológico y colaborativo.',
-    'Antes de iniciar mi camino en el desarrollo de software, estudié Técnico Auxiliar Administrativo y Financiero, formación que me permitió adquirir conocimientos relacionados con procesos administrativos, organización, atención al cliente y gestión empresarial. También tuve experiencia laboral en el sector de producción y atención al cliente, donde desarrollé habilidades como la responsabilidad, el trabajo en equipo, la comunicación y el compromiso.',
-    'Me considero una persona curiosa, creativa, responsable y perseverante. Me gusta aprender cosas nuevas, enfrentar retos, investigar cuando desconozco algo y buscar soluciones a los problemas que se presentan durante el desarrollo de un proyecto.',
-    'Mi objetivo es continuar creciendo profesionalmente en el área del desarrollo de software, adquirir experiencia en proyectos reales, fortalecer mis habilidades técnicas y contribuir a la creación de soluciones tecnológicas que generen un impacto positivo en las personas y las organizaciones.',
+  'Soy Daniel Ríos Giraldo, desarrollador de software Full-Stack y Tecnólogo en Análisis y Desarrollo de Software (SENA). Mi enfoque está en construir aplicaciones web y móviles escalables, respaldadas por arquitecturas de bases de datos sólidas y buenas prácticas de aseguramiento de calidad (QA).',
+  'Actualmente desarrollo mi etapa productiva en Tecnoparque – Nodo SENA, integrándome en entornos tecnológicos colaborativos para diseñar e implementar soluciones reales. A lo largo de mi trayectoria he construido proyectos completos —desde plataformas de agendamiento y e-commerce hasta sistemas de respaldo automatizado— trabajando con stacks modernos como Next.js, Node.js, Python/Django, PostgreSQL y MongoDB.',
+  'Mi formación previa como Técnico Auxiliar Administrativo y Financiero, sumada a mi experiencia en producción y atención al cliente, me brinda una ventaja clave: no solo escribo código, sino que entiendo los procesos operativos, la lógica de negocio y las necesidades reales del usuario final.',
+  'Me caracterizo por una mentalidad analítica, perseverante y orientada a la resolución de problemas. Busco seguir aportando valor en equipos de desarrollo donde pueda asumir nuevos retos técnicos y transformar ideas complejas en productos digitales funcionales y de alto impacto.',
   ],
   facts: [
     { label: 'Ubicación', value: 'Medellín, Colombia' },
