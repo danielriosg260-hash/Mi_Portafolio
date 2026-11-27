@@ -5,7 +5,6 @@ import { GithubIcon, LinkedinIcon, WhatsappIcon } from '../icons'
 import { CONTACT, PROFILE } from 'app/data/portfolio'
 import { Reveal } from '../reveal'
 import { Section, SectionHead } from '../section-head'
-import { ContactCard } from '../contact-card'
 
 const links = [
   {
@@ -38,6 +37,49 @@ const links = [
   },
 ]
 
+export function Footer() {
+  const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+
+  return (
+    <footer className="footer">
+      <div className="container footer-inner">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span className="logo-mark">{PROFILE.initials}</span>
+          <div>
+            <b style={{ color: '#eaf1ff' }}>{PROFILE.name}</b>
+            <div style={{ fontSize: 13 }}>
+              {PROFILE.role} · {PROFILE.location}
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-socials">
+          <a className="icon-btn" href={`mailto:${CONTACT.email}`} aria-label="Correo">
+            <Mail size={17} />
+          </a>
+          <a className="icon-btn" href={CONTACT.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+            <GithubIcon size={17} />
+          </a>
+          <a className="icon-btn" href={CONTACT.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <LinkedinIcon size={17} />
+          </a>
+          <a className="icon-btn" href={CONTACT.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
+            <WhatsappIcon size={17} />
+          </a>
+          <button className="icon-btn" onClick={toTop} aria-label="Volver arriba">
+            <ArrowUp size={17} />
+          </button>
+        </div>
+
+        <div style={{ textAlign: 'right', fontSize: 13, color: '#6b7a99' }}>
+          <div>Desarrollando ideas, aprendiendo tecnologías y construyendo soluciones digitales.</div>
+          <div style={{ marginTop: 4 }}>© {new Date().getFullYear()} {PROFILE.name}. Todos los derechos reservados.</div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
 export function ContactSection() {
   return (
     <Section id="contacto">
@@ -60,8 +102,70 @@ export function ContactSection() {
             proyecto o deseas conocer más sobre mi trabajo, conversemos.
           </p>
 
-          {/* Nueva tarjeta de contacto unificada con diseño consistente */}
-          <ContactCard />
+          {/* Formulario de contacto minimalista - debajo de "Trabajemos juntos" */}
+          <form
+            onSubmit={async (e: React.FormEvent) => {
+              e.preventDefault()
+              const formData = new FormData(e.target as HTMLFormElement)
+              try {
+                const response = await fetch('https://formspree.io/f/your-form-endpoint', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    message: formData.get('message'),
+                  }),
+                })
+                if (response.ok) {
+                  alert('¡Mensaje enviado!')
+                } else {
+                  alert('Error al enviar')
+                }
+              } catch {
+                alert('Error de conexión')
+              }
+            }}
+          >
+            <div className="max-w-md mx-auto space-y-4 px-4 py-6 rounded-xl border bg-gray-800/50 backdrop-filter:blur(20px) border-gray-600/30">
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Nombre</label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  className="w-full px-3 py-2 border border-gray-500 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors bg-gray-900 text-white placeholder-gray-400"
+                  placeholder="Tu nombre"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="w-full px-3 py-2 border border-gray-500 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors bg-gray-900 text-white placeholder-gray-400"
+                  placeholder="tu@email.com"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Mensaje</label>
+                <textarea
+                  name="message"
+                  rows={4}
+                  required
+                  className="w-full px-3 py-2 border border-gray-500 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-y bg-gray-900 text-white placeholder-gray-400"
+                  placeholder="Tu mensaje..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full px-4 py-2 bg-primary-600 text-white rounded-md font-medium text-sm transition-colors hover:bg-primary-500"
+              >
+                Enviar mensaje
+              </button>
+            </div>
+          </form>
 
           <div
             style={{
@@ -108,48 +212,5 @@ export function ContactSection() {
         </Reveal>
       </div>
     </Section>
-  )
-}
-
-export function Footer() {
-  const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
-
-  return (
-    <footer className="footer">
-      <div className="container footer-inner">
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span className="logo-mark">{PROFILE.initials}</span>
-          <div>
-            <b style={{ color: '#eaf1ff' }}>{PROFILE.name}</b>
-            <div style={{ fontSize: 13 }}>
-              {PROFILE.role} · {PROFILE.location}
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-socials">
-          <a className="icon-btn" href={`mailto:${CONTACT.email}`} aria-label="Correo">
-            <Mail size={17} />
-          </a>
-          <a className="icon-btn" href={CONTACT.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-            <GithubIcon size={17} />
-          </a>
-          <a className="icon-btn" href={CONTACT.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <LinkedinIcon size={17} />
-          </a>
-          <a className="icon-btn" href={CONTACT.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
-            <WhatsappIcon size={17} />
-          </a>
-          <button className="icon-btn" onClick={toTop} aria-label="Volver arriba">
-            <ArrowUp size={17} />
-          </button>
-        </div>
-
-        <div style={{ textAlign: 'right', fontSize: 13, color: '#6b7a99' }}>
-          <div>Desarrollando ideas, aprendiendo tecnologías y construyendo soluciones digitales.</div>
-          <div style={{ marginTop: 4 }}>© {new Date().getFullYear()} {PROFILE.name}. Todos los derechos reservados.</div>
-        </div>
-      </div>
-    </footer>
   )
 }
