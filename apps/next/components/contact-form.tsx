@@ -11,39 +11,39 @@ interface ContactFormProps {
  * Formulario de contacto simple.
  * Usa Formspree para enviar los mensajes a tu correo.
  * Mantiene los enlaces directos (email, WhatsApp) visibles siempre.
+ * Diseño oscuro y dorado con alertas visuales personalizadas.
  */
 export function ContactForm({ onSuccess, onError }: ContactFormProps = {}) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleSubmit = async (e: React.FormEvent, data: {
-    name: string
-    email: string
-    message: string
-  }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    if (isSubmitting) return
     e.preventDefault()
     setIsSubmitting(true)
     setStatus('idle')
 
     try {
-      const form = e.currentTarget
-      const response = await fetch('https://formspree.io/f/mwlojkaw', {
+      const form = e.currentTarget as HTMLFormElement
+      const response = await fetch('https://formspree.io/f/xppdewdd', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
         body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          message: data.message,
+          name: (form.querySelector('input[name="name"]') as HTMLInputElement)?.value || '',
+          email: (form.querySelector('input[name="email"]') as HTMLInputElement)?.value || '',
+          message: (form.querySelector('textarea[name="message"]') as HTMLTextAreaElement)?.value || '',
         }),
       })
 
       if (response.ok) {
         setStatus('success')
+        form.reset()
+        // Ocultar automáticamente después de 5 segundos
+        setTimeout(() => setStatus('idle'), 5000)
         if (onSuccess) onSuccess()
-        ;(e.currentTarget as HTMLFormElement).reset()
       } else {
         const errorData = await response.json()
         const errorMsg = errorData.error || 'Error al enviar el formulario'
@@ -51,9 +51,8 @@ export function ContactForm({ onSuccess, onError }: ContactFormProps = {}) {
         if (onError) onError(errorMsg)
       }
     } catch (err) {
-      const errorMsg = 'Error de conexión. Intenta de nuevo.'
       setStatus('error')
-      if (onError) onError(errorMsg)
+      if (onError) onError('Error de conexión. Intenta de nuevo.')
     } finally {
       setIsSubmitting(false)
     }
@@ -61,11 +60,7 @@ export function ContactForm({ onSuccess, onError }: ContactFormProps = {}) {
 
   return (
     <form
-      onSubmit={(e) => handleSubmit(e, {
-        name: (e.currentTarget.querySelector('input[name="name"]') as HTMLInputElement)?.value || '',
-        email: (e.currentTarget.querySelector('input[name="email"]') as HTMLInputElement)?.value || '',
-        message: (e.currentTarget.querySelector('textarea[name="message"]') as HTMLTextAreaElement)?.value || '',
-      })}
+      onSubmit={handleSubmit}
       style={{
         maxWidth: '560px',
         margin: '2rem auto',
@@ -177,13 +172,70 @@ export function ContactForm({ onSuccess, onError }: ContactFormProps = {}) {
         {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
       </button>
 
-      {/* Mensajes de estado */}
+      {/* Alerta de éxito visual - tarjeta redonda */}
       {status === 'success' && (
-        <p style={{ textAlign: 'left', marginTop: '12px', color: '#d4d4d4' }}>✅ Tu mensaje ha sido enviado. ¡Gracias!</p>
+        <div
+          style={{
+            padding: '14px 16px',
+            borderRadius: '12px',
+            backgroundColor: 'rgba(234, 179, 8, 0.12)',
+            border: '1px solid rgba(250, 204, 21, 0.45)',
+            color: '#fef08a',
+            fontSize: '14px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            marginTop: '12px',
+          }}
+        >
+          <span>Mensaje enviado correctamente. ¡Gracias por escribirme!</span>
+          <button
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#fef08a',
+              fontSize: '14px',
+              cursor: 'pointer',
+            }}
+            onClick={() => setStatus('idle')}
+          >
+            ×
+          </button>
+        </div>
       )}
 
+      {/* Alerta de error visual - tarjeta redonda */}
       {status === 'error' && (
-        <p style={{ textAlign: 'left', marginTop: '12px', color: '#f87171' }}>❌ Hubo un error. Intenta de nuevo o usa los enlaces directos.</p>
+        <div
+          style={{
+            padding: '14px 16px',
+            borderRadius: '12px',
+            backgroundColor: 'rgba(239, 68, 68, 0.12)',
+            border: '1px solid rgba(248, 113, 113, 0.45)',
+            color: '#fecaca',
+            fontSize: '14px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            marginTop: '12px',
+          }}
+        >
+          <span>No se pudo enviar el mensaje. Intenta de nuevo o escríbeme directo por WhatsApp o correo.</span>
+          <button
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#fecaca',
+              fontSize: '14px',
+              cursor: 'pointer',
+            }}
+            onClick={() => setStatus('idle')}
+          >
+            ×
+          </button>
+        </div>
       )}
     </form>
   )

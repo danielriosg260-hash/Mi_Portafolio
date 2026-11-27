@@ -104,12 +104,8 @@ export function ContactSection() {
           </p>
 
           <ContactForm
-          onSuccess={() => {
-            alert('¡Mensaje enviado!')
-          }}
-          onError={(error) => {
-            alert(error || 'Error al enviar. Intenta de nuevo o usa los enlaces directos.')
-          }}
+          onSuccess={() => {}}
+          onError={(error) => {}}
         />
 
           <div
