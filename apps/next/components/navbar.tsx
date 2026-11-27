@@ -15,17 +15,6 @@ export function Navbar({ is3DActive = false, onToggle3D, onOpen3D }: NavbarProps
   const [scrolled, setScrolled] = useState(false)
   const [progress, setProgress] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const checkWidth = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    checkWidth()
-    window.addEventListener('resize', checkWidth)
-    return () => window.removeEventListener('resize', checkWidth)
-  }, [])
 
   // Order matters: Formación debe ir ANTES que Habilidades
   const sections = [
@@ -47,15 +36,8 @@ export function Navbar({ is3DActive = false, onToggle3D, onOpen3D }: NavbarProps
       setScrolled(y > 24)
       setProgress(h > 0 ? (y / h) * 100 : 0)
     }
-    const handleScroll = () => {
-      setMobileMenuOpen(false)
-    }
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('scroll', handleScroll)
-    }
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   const scrollToSection = (id: string) => {
@@ -72,7 +54,7 @@ export function Navbar({ is3DActive = false, onToggle3D, onOpen3D }: NavbarProps
     const handleClickOutside = (event: MouseEvent) => {
       const menuPanel = document.querySelector('.mobile-menu-panel')
       if (menuPanel && !menuPanel.contains(event.target as Node)) {
-        setMobileMenuOpen(false)
+        setMenuOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -95,10 +77,18 @@ export function Navbar({ is3DActive = false, onToggle3D, onOpen3D }: NavbarProps
           </span>
         </button>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          {/* Botón hamburguesa */}
+        <div
+          style={{
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            marginLeft: 'auto',
+          }}
+        >
+          {/* Botón hamburguesa - inicia cerrado, visible siempre */}
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen((prev) => !prev)}
             style={{
               width: '42px',
               height: '42px',
@@ -117,87 +107,74 @@ export function Navbar({ is3DActive = false, onToggle3D, onOpen3D }: NavbarProps
             {menuOpen ? '✕' : '☰'}
           </button>
 
-          {/* Panel desplegable siempre visible */}
-          <div
-            style={{
-              position: 'absolute',
-              top: 'calc(100% + 12px)',
-              right: 0,
-              minWidth: '220px',
-              padding: '10px',
-              borderRadius: '16px',
-              backgroundColor: 'rgba(18, 15, 10, 0.96)',
-              border: '1px solid rgba(245, 158, 11, 0.28)',
-              boxShadow: '0 16px 40px rgba(0, 0, 0, 0.6)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '4px',
-              zIndex: 50,
-              marginLeft: '-42px',
-            }}
-          >
-            {sections.map((section) => (
-              <a
-                key={section.id}
-                href={`#${section.id}`}
-                style={{
-                  padding: '10px 14px',
-                  borderRadius: '10px',
-                  color: '#e5e5e5',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  textAlign: 'left',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => {
-                  ;(e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(245, 158, 11, 0.12)'
-                  ;(e.currentTarget as HTMLAnchorElement).style.color = '#facc15'
-                }}
-                onMouseLeave={(e) => {
-                  ;(e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent'
-                  ;(e.currentTarget as HTMLAnchorElement).style.color = '#e5e5e5'
-                }}
-                onClick={(e) => {
-                  setMobileMenuOpen(false)
-                  scrollToSection(section.id)
-                }}
-              >
-                {section.label}
-              </a>
-            ))}
-
-            {/* Enlace Hablemos al final */}
-            <a
-              href="#contacto"
+          {/* Panel desplegable - solo aparece cuando menuOpen es true */}
+          {menuOpen && (
+            <div
               style={{
-                padding: '10px 14px',
-                borderRadius: '10px',
-                color: '#facc15',
-                fontSize: '14px',
-                fontWeight: 500,
-                textAlign: 'left',
-                backgroundColor: 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-                marginTop: 'auto',
+                position: 'absolute',
+                top: 'calc(100% + 12px)',
+                right: 0,
+                minWidth: '220px',
+                padding: '10px',
+                borderRadius: '16px',
+                backgroundColor: 'rgba(18, 15, 10, 0.96)',
+                border: '1px solid rgba(245, 158, 11, 0.28)',
+                boxShadow: '0 16px 40px rgba(0, 0, 0, 0.6)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                zIndex: 50,
+                marginLeft: '-42px',
               }}
-              onClick={() => setMobileMenuOpen(false)}
             >
-              Hablemos
-            </a>
-          </div>
-        </div>
+              {sections.map((section) => (
+                <a
+                  key={section.id}
+                  href={`#${section.id}`}
+                  style={{
+                    padding: '10px 14px',
+                    borderRadius: '10px',
+                    color: '#e5e5e5',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    textAlign: 'left',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={(e) => {
+                    ;(e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(245, 158, 11, 0.12)'
+                    ;(e.currentTarget as HTMLAnchorElement).style.color = '#facc15'
+                  }}
+                  onMouseLeave={(e) => {
+                    ;(e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent'
+                    ;(e.currentTarget as HTMLAnchorElement).style.color = '#e5e5e5'
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setMenuOpen(false)
+                    scrollToSection(section.id)
+                  }}
+                >
+                  {section.label}
+                </a>
+              ))}
+            </div>
+          )}
 
-        {/* Botón Hablemos - siempre visible a la derecha */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+          {/* Botón Hablemos - siempre visible a la derecha, fuera del desplegable */}
           <a
             href="#contacto"
             style={{
-              padding: '9px 22px',
-              fontSize: 13.5,
-              color: '#f6d585',
+              padding: '10px 22px',
+              borderRadius: '9999px',
+              background: 'linear-gradient(135deg, #facc15 0%, #eab308 100%)',
+              color: '#0b0906',
+              fontWeight: 600,
+              fontSize: '14px',
+              border: 'none',
+              cursor: 'pointer',
+              textDecoration: 'none',
             }}
           >
             Hablemos
