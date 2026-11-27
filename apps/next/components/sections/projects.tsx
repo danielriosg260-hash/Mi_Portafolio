@@ -18,6 +18,16 @@ function card3DStyle(is3DActive: boolean) {
   return 'border-color: rgba(246,213,133,0.15) !important'
 }
 
+/**
+ * Clase de estado para las tarjetas de proyectos (visto originalmente).
+ * Mantiene la funcionalidad original de badges de estado.
+ */
+function statusClass(status: string) {
+  if (status === 'Completado') return 'status status-done'
+  if (status === 'En evolución') return 'status status-evo'
+  return 'status status-dev'
+}
+
 function ProjectCard({ project, index, is3DActive }: { project: Project; index: number; is3DActive: boolean }) {
   const cardClass = `card project-card ${card3DStyle(is3DActive)}`
   return (

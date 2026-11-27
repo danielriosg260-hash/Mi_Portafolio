@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Send, WhatsappIcon, LinkedinIcon, GithubIcon } from 'lucide-react'
+import { Mail, Send } from 'lucide-react'
+import { GithubIcon, LinkedinIcon, WhatsappIcon } from './icons'
 import { CONTACT, PROFILE } from 'app/data/portfolio'
 
 /**
@@ -11,7 +12,7 @@ import { CONTACT, PROFILE } from 'app/data/portfolio'
  */
 export function ContactCard() {
   const [showForm, setShowForm] = useState(false)
-  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error' | 'sending'>('idle')
 
   return (
     <div className="max-w-2xl mx-auto">
