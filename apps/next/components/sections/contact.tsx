@@ -126,40 +126,97 @@ export function ContactSection() {
                 alert('Error de conexión')
               }
             }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'left' }}
           >
-            <div className="max-w-xl mx-auto mt-8 p-6 rounded-2xl border border-amber-500/20 bg-[#14110c]/90 flex flex-col gap-4">
+            <div
+              style={{
+                maxWidth: '560px',
+                margin: '2rem auto',
+                padding: '24px',
+                borderRadius: '16px',
+                backgroundColor: 'rgba(20, 17, 12, 0.92)',
+                border: '1px solid rgba(245, 158, 11, 0.25)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+                textAlign: 'left',
+              }}
+            >
               {/* Nombre */}
               <div>
-                <label className="block text-neutral-300 text-sm font-medium mb-1.5 text-left">Nombre</label>
+                <label
+                  style={{ display: 'block', color: '#d4d4d4', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
+                >
+                  Nombre
+                </label>
                 <input
                   type="text"
                   name="name"
                   required
-                  className="bg-[#0b0906] text-white rounded-xl border border-amber-500/25 block w-full focus:border-amber-400 focus:outline-none px-4 py-3"
+                  style={{
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    backgroundColor: '#0b0906',
+                    color: '#ffffff',
+                    border: '1px solid rgba(245, 158, 11, 0.3)',
+                    borderRadius: '12px',
+                    padding: '12px 16px',
+                    fontSize: '14px',
+                    outline: 'none',
+                  }}
                   placeholder="Tu nombre"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label className="block text-neutral-300 text-sm font-medium mb-1.5 text-left">Email</label>
+                <label
+                  style={{ display: 'block', color: '#d4d4d4', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
+                >
+                  Email
+                </label>
                 <input
                   type="email"
                   name="email"
                   required
-                  className="bg-[#0b0906] text-white rounded-xl border border-amber-500/25 block w-full focus:border-amber-400 focus:outline-none px-4 py-3"
+                  style={{
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    backgroundColor: '#0b0906',
+                    color: '#ffffff',
+                    border: '1px solid rgba(245, 158, 11, 0.3)',
+                    borderRadius: '12px',
+                    padding: '12px 16px',
+                    fontSize: '14px',
+                    outline: 'none',
+                  }}
                   placeholder="tu@email.com"
                 />
               </div>
 
               {/* Mensaje */}
               <div>
-                <label className="block text-neutral-300 text-sm font-medium mb-1.5 text-left">Mensaje</label>
+                <label
+                  style={{ display: 'block', color: '#d4d4d4', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
+                >
+                  Mensaje
+                </label>
                 <textarea
                   name="message"
                   rows={4}
                   required
-                  className="bg-[#0b0906] text-white rounded-xl border border-amber-500/25 block w-full focus:border-amber-400 focus:outline-none px-4 py-3 resize-y"
+                  style={{
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    backgroundColor: '#0b0906',
+                    color: '#ffffff',
+                    border: '1px solid rgba(245, 158, 11, 0.3)',
+                    borderRadius: '12px',
+                    padding: '12px 16px',
+                    fontSize: '14px',
+                    outline: 'none',
+                    resize: 'vertical',
+                  }}
                   placeholder="Tu mensaje..."
                 ></textarea>
               </div>
@@ -168,7 +225,17 @@ export function ContactSection() {
               <div>
                 <button
                   type="submit"
-                  className="rounded-full px-6 py-3 font-medium text-sm text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 hover:border-amber-500 transition-all"
+                  style={{
+                    width: '100%',
+                    padding: '12px 24px',
+                    borderRadius: '9999px',
+                    background: 'linear-gradient(135deg, #facc15 0%, #eab308 100%)',
+                    color: '#0b0906',
+                    fontWeight: 600,
+                    fontSize: '14px',
+                    border: 'none',
+                    cursor: 'pointer',
+                  }}
                 >
                   Enviar mensaje
                 </button>
