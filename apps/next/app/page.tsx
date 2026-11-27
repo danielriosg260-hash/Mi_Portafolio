@@ -61,7 +61,7 @@ export default function Page() {
         <Hero is3DActive={is3DActive} onToggle3D={toggle3D} />
         <AboutSection />
         <ExperienceSection />
-        <ProjectsSection />
+        <ProjectsSection is3DActive={is3DActive} />
         <TechSection />
         <EducationSection />
         <SkillsSection />

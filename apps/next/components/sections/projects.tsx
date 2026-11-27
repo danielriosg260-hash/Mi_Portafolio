@@ -7,15 +7,21 @@ import { PROJECTS, type Project } from 'app/data/portfolio'
 import { Reveal, staggerContainer, staggerItem } from '../reveal'
 import { Section, SectionHead } from '../section-head'
 
-function statusClass(status: Project['status']) {
-  if (status === 'Completado') return 'status status-done'
-  if (status === 'En evolución') return 'status status-evo'
-  return 'status status-dev'
+/**
+ * Clase consistente para modo 3D: todas las tarjetas tendrán
+ * un sutil efecto de vidrio que permite ver el fondo 3D claramente
+ * sin importar su posición o gradiente.
+ */
+function card3DStyle(is3DActive: boolean) {
+  if (!is3DActive) return ''
+  // Efecto consistente: fondo semitransparente con sutil brillo dorado
+  return 'border-color: rgba(246,213,133,0.15) !important'
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ project, index, is3DActive }: { project: Project; index: number; is3DActive: boolean }) {
+  const cardClass = `card project-card ${card3DStyle(is3DActive)}`
   return (
-    <Reveal delay={(index % 3) * 0.1} className="card project-card">
+    <Reveal delay={(index % 3) * 0.1} className={cardClass}>
       {/* Cover con orbes de color */}
       <div
         className="project-cover"
@@ -260,7 +266,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   )
 }
 
-export function ProjectsSection() {
+export function ProjectsSection({ is3DActive }: { is3DActive: boolean }) {
   return (
     <Section id="proyectos">
       <SectionHead
@@ -279,7 +285,7 @@ export function ProjectsSection() {
       >
         {PROJECTS.map((p, i) => (
           <motion.div key={p.id} variants={staggerItem}>
-            <ProjectCard project={p} index={i} />
+            <ProjectCard project={p} index={i} is3DActive={is3DActive} />
           </motion.div>
         ))}
       </motion.div>
