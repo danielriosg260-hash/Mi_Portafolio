@@ -5,6 +5,7 @@ import { GithubIcon, LinkedinIcon, WhatsappIcon } from '../icons'
 import { CONTACT, PROFILE } from 'app/data/portfolio'
 import { Reveal } from '../reveal'
 import { Section, SectionHead } from '../section-head'
+import { ContactForm } from '../contact-form'
 
 const links = [
   {
@@ -58,6 +59,16 @@ export function ContactSection() {
             creciendo como desarrollador de software. Si tienes una propuesta, un
             proyecto o deseas conocer más sobre mi trabajo, conversemos.
           </p>
+
+          {/* Formulario de contacto */}
+          <ContactForm
+            onSuccess={() => {
+              // Resetear formulario o mostrar mensaje
+            }}
+            onError={(error) => {
+              // Manejar error - el usuario puede usar enlaces directos
+            }}
+          />
 
           <div
             style={{
