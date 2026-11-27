@@ -3,6 +3,7 @@
 import { Mail, Send, ArrowUp } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, WhatsappIcon } from '../icons'
 import { CONTACT, PROFILE } from 'app/data/portfolio'
+import { ContactForm } from '../contact-form'
 import { Reveal } from '../reveal'
 import { Section, SectionHead } from '../section-head'
 
@@ -102,146 +103,14 @@ export function ContactSection() {
             proyecto o deseas conocer más sobre mi trabajo, conversemos.
           </p>
 
-          {/* Formulario de contacto - debajo de "Trabajemos juntos" */}
-          <form
-            onSubmit={async (e: React.FormEvent) => {
-              e.preventDefault()
-              const formData = new FormData(e.target as HTMLFormElement)
-              try {
-                const response = await fetch('https://formspree.io/f/your-form-endpoint', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    message: formData.get('message'),
-                  }),
-                })
-                if (response.ok) {
-                  alert('¡Mensaje enviado!')
-                } else {
-                  alert('Error al enviar')
-                }
-              } catch {
-                alert('Error de conexión')
-              }
-            }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'left' }}
-          >
-            <div
-              style={{
-                maxWidth: '560px',
-                margin: '2rem auto',
-                padding: '24px',
-                borderRadius: '16px',
-                backgroundColor: 'rgba(20, 17, 12, 0.92)',
-                border: '1px solid rgba(245, 158, 11, 0.25)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
-                textAlign: 'left',
-              }}
-            >
-              {/* Nombre */}
-              <div>
-                <label
-                  style={{ display: 'block', color: '#d4d4d4', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
-                >
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  style={{
-                    width: '100%',
-                    boxSizing: 'border-box',
-                    backgroundColor: '#0b0906',
-                    color: '#ffffff',
-                    border: '1px solid rgba(245, 158, 11, 0.3)',
-                    borderRadius: '12px',
-                    padding: '12px 16px',
-                    fontSize: '14px',
-                    outline: 'none',
-                  }}
-                  placeholder="Tu nombre"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label
-                  style={{ display: 'block', color: '#d4d4d4', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  style={{
-                    width: '100%',
-                    boxSizing: 'border-box',
-                    backgroundColor: '#0b0906',
-                    color: '#ffffff',
-                    border: '1px solid rgba(245, 158, 11, 0.3)',
-                    borderRadius: '12px',
-                    padding: '12px 16px',
-                    fontSize: '14px',
-                    outline: 'none',
-                  }}
-                  placeholder="tu@email.com"
-                />
-              </div>
-
-              {/* Mensaje */}
-              <div>
-                <label
-                  style={{ display: 'block', color: '#d4d4d4', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
-                >
-                  Mensaje
-                </label>
-                <textarea
-                  name="message"
-                  rows={4}
-                  required
-                  style={{
-                    width: '100%',
-                    boxSizing: 'border-box',
-                    backgroundColor: '#0b0906',
-                    color: '#ffffff',
-                    border: '1px solid rgba(245, 158, 11, 0.3)',
-                    borderRadius: '12px',
-                    padding: '12px 16px',
-                    fontSize: '14px',
-                    outline: 'none',
-                    resize: 'vertical',
-                  }}
-                  placeholder="Tu mensaje..."
-                ></textarea>
-              </div>
-
-              {/* Botón de envío */}
-              <div>
-                <button
-                  type="submit"
-                  style={{
-                    width: '100%',
-                    padding: '12px 24px',
-                    borderRadius: '9999px',
-                    background: 'linear-gradient(135deg, #facc15 0%, #eab308 100%)',
-                    color: '#0b0906',
-                    fontWeight: 600,
-                    fontSize: '14px',
-                    border: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Enviar mensaje
-                </button>
-              </div>
-            </div>
-          </form>
+          <ContactForm
+          onSuccess={() => {
+            alert('¡Mensaje enviado!')
+          }}
+          onError={(error) => {
+            alert(error || 'Error al enviar. Intenta de nuevo o usa los enlaces directos.')
+          }}
+        />
 
           <div
             style={{
